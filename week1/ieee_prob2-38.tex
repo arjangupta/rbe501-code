@@ -67,7 +67,7 @@ a homogeneous transformation,
 Also, the homogeneous transformation $H^m_n$ describes the transformation
 of frame $n$ with respect to $m$.
 Therefore, given our objectives, and the frames as numbered in Figure 1, 
-we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.\\
+we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.
 
 \subsection{Compute all rotation matrices}
 As shown in the figure, there are no rotational differences between frames
@@ -80,7 +80,7 @@ $3 \times 3$ identity matrix. So,
         0 & 0 & 1
     \end{bmatrix}
 \]
-Again by looking at the figure, we determine that the rotation for frame 3
+By visually inspecting the figure, we also determine that the rotation for frame 3
 can be obtained by a $-180\degree$ rotation around the x-axis, and a
 $-90\degree$ rotation around the z-axis. Using our MATLAB Live Script,
 we can determine this as,
@@ -91,8 +91,28 @@ we can determine this as,
         0 & 0 & -1\\
     \end{bmatrix}
 \]
-Next,
+Similarly, the rotation for frame 2 with respect to frame 3 can be obtained
+by a $180\degree$ rotation around the y-axis, and a $90\degree$ rotation around
+the z-axis. This can be stated as,
+\[
+    R^3_2 = R_{y,\pi}R_{z,\frac{\pi}{2}} = \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & -1\\
+    \end{bmatrix}
+\]
 
+\subsection{Compute all the translations}
+By visually inspecting the figure, it is easy to see that,
+\[
+    d^0_1 = \begin{bmatrix}
+        0\\
+        1\\
+        1
+    \end{bmatrix}
+\]
+In order to find $d^0_2$ and $d^0_3$, we need to consider
+the geometric distance from frame 0 to the very center of the cube. 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
