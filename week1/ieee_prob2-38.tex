@@ -23,8 +23,8 @@ agupta11@wpi.edu}
 \maketitle
 
 \begin{abstract}
-This document provides an in-depth solution for Problem 2--38 described in
-Robot Modeling and Control (2\textsuperscript{nd} edition)~\cite{Spong2006}.
+This document provides an in-depth solution for Problem 2--37 described in
+Robot Modeling and Control.
 This is the assignment for the first week in RBE 501 (Robot Dynamics),
 Spring 2023 at Worcester Polytechnic Institute.
 \end{abstract}
@@ -34,12 +34,23 @@ robotics, homogeneous transformation, frames
 \end{IEEEkeywords}
 
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+We are asked to solve Problem 2--37 of the main textbook~\cite{Spong2006}. Here,
+a robot is near a table, with a camera placed over the table to supervise the
+robot. A cube is also placed in the center of the table-top. 
+The objective of the problem is to express all the frames in the environment
+(frame for the edge of the table, frame for the cube,
+and frame for the overhead camera) in terms of the homogeneous transformations with
+respect to the base frame, situated at the base link of the robot. An additional
+objective of the problem is to find the homogeneous transformation relating
+the center of the cube's frame to the camera's frame. The graphic below, given
+in the textbook, gives a pictorial representation of the problem.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{./prob3-37-fig.png}
+    \caption{Figure for 2--37}
+\end{figure}
 
 \section{Materials and Methods}
-
-\subsection{Maintaining the Integrity of the Specifications}
 
 The IEEEtran class file is used to format your paper and style the text. All margins, 
 column widths, line spaces, and text fonts are prescribed; please do not 
