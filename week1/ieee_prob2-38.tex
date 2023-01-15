@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{gensymb}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -52,6 +53,8 @@ in the textbook, gives a pictorial representation of the problem.
 
 \section{Materials and Methods}
 
+\subsection{Restate objective in technical terms}
+
 We know from the textbook~\cite{Spong2006} that given a rotational matrix $R$, and
 a rigid translation $d$, we have the following definition of
 a homogeneous transformation,
@@ -64,7 +67,31 @@ a homogeneous transformation,
 Also, the homogeneous transformation $H^m_n$ describes the transformation
 of frame $n$ with respect to $m$.
 Therefore, given our objectives, and the frames as numbered in Figure 1, 
-we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.
+we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.\\
+
+\subsection{Compute all rotation matrices}
+As shown in the figure, there are no rotational differences between frames
+0, 1, and 2. Therefore, the corresponding rotational matrices are the
+$3 \times 3$ identity matrix. So,
+\[
+    R^0_1 = R^0_2 = I_3 = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+\]
+Again by looking at the figure, we determine that the rotation for frame 3
+can be obtained by a $-180\degree$ rotation around the x-axis, and a
+$-90\degree$ rotation around the z-axis. Using our MATLAB Live Script,
+we can determine this as,
+\[
+    R^0_3 = R_{x,-\pi} R_{z,-\frac{\pi}{2}} = \begin{bmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & -1\\
+    \end{bmatrix}
+\]
+Next,
 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
