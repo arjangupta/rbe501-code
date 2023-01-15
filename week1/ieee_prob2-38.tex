@@ -143,6 +143,37 @@ Also, since the cube is directly under the camera, we can state,
         2
     \end{bmatrix}
 \]
+\vspace{0.1in}
+\section{Results}
+Given the fact that we have found all of the rotation matrices and
+rigid transformations, we can now form the final results of
+our objective. These are as follows,
+\[
+    H^0_1 = \begin{bmatrix}
+        R^0_1 & d^0_1\\
+        0 & 1
+    \end{bmatrix}
+    = \begin{bmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 1\\
+        0 & 0 & 1 & 1\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}\\
+    H^0_1 = \begin{bmatrix}
+        R^0_1 & d^0_1\\
+        0 & 1
+    \end{bmatrix}
+    = \begin{bmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 1\\
+        0 & 0 & 1 & 1\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+Furthermore, a MATLAB Live Script has been submitted alongside
+this report to show the code used to compute these results.
+\section{Discussion}
+
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
