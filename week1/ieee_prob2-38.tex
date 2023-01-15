@@ -52,14 +52,19 @@ in the textbook, gives a pictorial representation of the problem.
 
 \section{Materials and Methods}
 
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
-
+We know from the textbook~\cite{Spong2006} that given a rotational matrix $R$, and
+a rigid translation $d$, we have the following definition of
+a homogeneous transformation,
+\[
+    H = \begin{bmatrix}
+        R & d\\
+        0 & 1
+    \end{bmatrix}; R \in SO(3), d \in \mathbb{R}^3
+\]
+Also, the homogeneous transformation $H^m_n$ describes the transformation
+of frame $n$ with respect to $m$.
+Therefore, given our objectives, and the frames as numbered in Figure 1, 
+we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.
 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
