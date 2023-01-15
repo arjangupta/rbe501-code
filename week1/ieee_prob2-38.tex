@@ -158,22 +158,32 @@ our objective. These are as follows,
         0 & 1 & 0 & 1\\
         0 & 0 & 1 & 1\\
         0 & 0 & 0 & 1
-    \end{bmatrix}\\
-    H^0_1 = \begin{bmatrix}
-        R^0_1 & d^0_1\\
-        0 & 1
-    \end{bmatrix}
-    = \begin{bmatrix}
-        1 & 0 & 0 & 0\\
-        0 & 1 & 0 & 1\\
-        0 & 0 & 1 & 1\\
-        0 & 0 & 0 & 1
     \end{bmatrix}
 \]
 Furthermore, a MATLAB Live Script has been submitted alongside
 this report to show the code used to compute these results.
 \section{Discussion}
-
+In the opinion of the author, this problem is very practical
+in real-world robotics. If a 3-DOF robotic arm is being operated
+(which seems to be the case in Figure 1), then one of the modern 
+ways to monitor the arm would be to use computer vision via a camera.
+An overhead camera provides a good perspective in such a case, where
+the robot perhaps needs to perform tasks on the table-top. Some examples
+of table-top tasks could be moving chess pieces, manufacturing assembly,
+and other pick-and-place operations. In the case of this problem, the
+robot is doing something with a cube.\\
+\vspace{0in}\\
+Generally, in such a setup, it is imperative to know the relative transformations
+between the frames of the robot, table, and the camera in order for a computer
+to properly command the controllers of the robot to perform accurate and precise
+tasks. For a simple example, if the computer wants to command the robot to go
+to a location on the table, first the computer needs to compute that location using
+$H^3_1$. Next, the computer needs to use $H^0_1$ to help the robot know about
+that location.\\
+\vspace{0in}\\
+Calibration and frame transformations are very important in order for a robot
+to perform any real-world tasks. As for students of robotics, our spatial and
+geometric understanding of robotics is tested by this type of problem.
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
