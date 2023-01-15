@@ -48,7 +48,7 @@ in the textbook, gives a pictorial representation of the problem.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{./prob3-37-fig.png}
-    \caption{Figure for 2--37}
+    \caption{Figure for Problem 2--37}
 \end{figure}
 
 \section{Materials and Methods}
@@ -112,7 +112,37 @@ By visually inspecting the figure, it is easy to see that,
     \end{bmatrix}
 \]
 In order to find $d^0_2$ and $d^0_3$, we need to consider
-the geometric distance from frame 0 to the very center of the cube. 
+the geometric distance from frame 0 to the very center of the cube.
+In the XY plane, we consider the table top as a square ABCD of side 1,
+as shown in Figure 2. Using the geometric properties of a square, we
+determine that $AE = EB = 0.5$ because $\triangle AEO \cong \triangle EOB$.
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{./tabletop.png}
+    \centering
+    \caption{Table-top square for Problem 2--37}
+\end{figure}\\
+For the Z component of the translations, we need to consider half of the height
+of the cube, which is 10 cm, or 0.1 m. Therefore, we can write,
+\[
+    d^0_2 = \begin{bmatrix}
+        -0.5\\
+        1.5\\
+        1.1
+    \end{bmatrix},
+    d^0_3 = \begin{bmatrix}
+        -0.5\\
+        1.5\\
+        2
+    \end{bmatrix}
+\]
+Also, since the cube is directly under the camera, we can state,
+\[
+    d^3_2 = \begin{bmatrix}
+        0\\
+        0\\
+        2
+    \end{bmatrix}
+\]
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
