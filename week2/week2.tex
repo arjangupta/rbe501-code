@@ -35,16 +35,21 @@ robotics, forward kinematics, manipulator
 \end{IEEEkeywords}
 
 \section{Introduction}
-We are asked to solve Problem 2--37 of the main textbook~\cite{Spong2006}. Here,
-a robot is near a table, with a camera placed over the table to supervise the
-robot. A cube is also placed in the center of the table-top. 
-The objective of the problem is to express all the frames in the environment
-(frame for the edge of the table, frame for the cube,
-and frame for the overhead camera) in terms of the homogeneous transformations with
-respect to the base frame, situated at the base link of the robot. An additional
-objective of the problem is to find the homogeneous transformation relating
-the center of the cube's frame to the camera's frame. The graphic below, given
-in the textbook, gives a pictorial representation of the problem.
+We are asked to solve Problems 3--2 and 3--5 of the main textbook~\cite{Spong2006}.
+For Problem 3--2, the objective is to calculate the forward kinematic equations
+of the robot shown in Figure 1 below, \textit{without} using the DH-convention.\\
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{prob3_2.png}
+    \centering
+    \caption{Three-link planar arm of Problem 3--2}
+\end{figure}\\
+For Problem 3--5, the objective is to calculate the forward kinematic equations
+of the robot shown in Figure 2 below, using the DH-convention.
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{prob3_5.png}
+    \centering
+    \caption{Three-link planar arm with prismatic joint of Problem 3--5}
+\end{figure}
 
 \section{Materials and Methods}
 
