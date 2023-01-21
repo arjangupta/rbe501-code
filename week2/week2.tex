@@ -53,17 +53,22 @@ of the robot shown in Figure 2 below, using the DH-convention.
 
 \section{Materials and Methods}
 
-\subsection{Restate objective in technical terms}
+\subsection{Approach for Problem 3--2}
 
-We know from the textbook~\cite{Spong2006} that given a rotational matrix $R$, and
-a rigid translation $d$, we have the following definition of
-a homogeneous transformation,
-\[
-    H = \begin{bmatrix}
-        R & d\\
-        0 & 1
-    \end{bmatrix}; R \in SO(3), d \in \mathbb{R}^3
-\]
+\subsubsection{Assignment of frames}
+The first step toward solving our problem is to redraw our robot in symbolic
+form, and assign frames 0 through 3 (for links 0 through 3). This is shown in
+Figure 3. Frame 0 is assigned at the first joint, frame 1 is assigned at the
+second joint, and frame 2 is assigned at third joint. Frame 3 is assigned at
+the end of link 3.\\
+% \vspace{0in}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{prob3_2_redraw}
+    \caption{Symbolic form of Figure 1, along with frame assignments}
+    \setlength{\belowcaptionskip}{-50pt}
+\end{figure}
+\subsubsection{Variables and constants}
 Also, the homogeneous transformation $H^m_n$ describes the transformation
 of frame $n$ with respect to $m$.
 Therefore, given our objectives, and the frames as numbered in Figure 1, 
