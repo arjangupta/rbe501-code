@@ -116,9 +116,57 @@ respective frames, they take on the following form.
 \end{equation*}
 
 Furthermore, we use another handy function to compute the homogeneous
-transformation matrices.
-
+transformation matrices. 
 \lstinputlisting{compute_h.m}
+
+Using this function and the previous one,
+we found the following H matrices for the frame-to-frame transformations.
+
+\[
+    H^0_1 = \begin{bmatrix}
+        R^0_1 & d^0_1\\
+        0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta _{1} & 0 & \sin\theta _{1} & L_{1}\\
+        0 & 1 & 0 & 0\\
+        -\sin\theta _{1} & 0 & \cos\theta_{1} & 0\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+
+\[
+    H^1_2 = \begin{bmatrix}
+        R^1_2 & d^1_2\\
+        0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta _{2} & 0 & \sin\theta _{2} & L_{2}\\
+        0 & 1 & 0 & 0\\
+        -\sin\theta _{2} & 0 & \cos\theta_{2} & 0\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+
+\[
+    H^2_3 = \begin{bmatrix}
+        R^2_3 & d^2_3\\
+        0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos\theta _{3} & 0 & \sin\theta _{3} & L_{3}\\
+        0 & 1 & 0 & 0\\
+        -\sin\theta _{3} & 0 & \cos\theta_{3} & 0\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+
+Now we are ready to multiply these matrices to obtain the final result
+of our objective.
+
 
 \subsection{Compute all rotation matrices}
 As shown in the figure, there are no rotational differences between frames
