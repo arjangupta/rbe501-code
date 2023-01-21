@@ -172,6 +172,16 @@ we found the following H matrices for the frame-to-frame transformations.
 Now we are ready to multiply these matrices to obtain the final result
 of our objective.
 
+\subsection{Approach for Problem 3--5}
+
+\subsubsection{Restate objective in technical terms}
+In technical terms, we must first assign frames 0 through 3 for
+each link of the manipulator. We will then form a table of DH
+parameters. Using the table, and the general form of the DH matrix,
+we will find the $A$ matrices for the manipulator i.e.\ we need to find
+$A_1$, $A_2$, and $A_3$. Using these, we need to find $T^0_3$
+to give us our final answer.
+
 \section{Results}
 
 \subsection{Result for Problem 3--2}
@@ -195,7 +205,7 @@ where,
     \\
     \lambda_2 = L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 +L_3 \,\sin \left(\theta_3 \right)\,\sigma_2 \\+L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
 \end{multline*}
-
+\hspace{10pt} and,
 \begin{align*}
     \sigma_1 &=\cos \left(\theta_3 \right)\,\sigma_2 -\sin \left(\theta_3 \right)\,\sigma_3 \\
     \sigma_2 &=\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
@@ -203,6 +213,9 @@ where,
     \sigma_4 &= -\cos \left(\theta_3 \right)\,\sigma_3 -\sin \left(\theta_3 \right)\,\sigma_2\\
     \sigma_5 &= \cos \left(\theta_3 \right)\,\sigma_3 +\sin \left(\theta_3 \right)\,\sigma_2
 \end{align*}
+
+This result is best visualized within the MATLAB LiveScript that has been submitted 
+alongside this report.
 
 \subsection{Result for Problem 3--5}
 
