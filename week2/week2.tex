@@ -55,11 +55,20 @@ of the robot shown in Figure 2 below, using the DH-convention.
 
 \subsection{Approach for Problem 3--2}
 
+\subsubsection{Restate objective in technical terms}
+In technical terms, we must first assign frames 0 through 3 for
+each link of the manipulator. Then, we need to find the homogeneous
+transformation matrices between each frame, i.e.\ we need to find
+$H^0_1$, $H^1_2$, and $H^2_3$. Using these, we need to find $H^0_3$
+to give us our final answer.
+
 \subsubsection{Assignment of frames}
 The first step toward solving our problem is to redraw our robot in symbolic
-form, and assign frames 0 through 3 (for links 0 through 3). This is shown in
-Figure 3. Frame 0 is assigned at the first joint, frame 1 is assigned at the
-second joint, and frame 2 is assigned at third joint. Frame 3 is assigned at
+form, and assign frames for links 0 through 3. This is shown in
+Figure 3. Frame 0 ($x_0 y_0 z_0$) is assigned at the first joint, frame 1
+($x_1 y_1 z_1$) is assigned at the
+second joint, and frame 2 ($x_2 y_2 z_2$)
+ is assigned at third joint. Frame 3 ($x_3 y_3 z_3$) is assigned at
 the end of link 3.\\
 % \vspace{0in}\\
 \begin{figure}[h]
@@ -69,10 +78,17 @@ the end of link 3.\\
     \setlength{\belowcaptionskip}{-50pt}
 \end{figure}
 \subsubsection{Variables and constants}
-Also, the homogeneous transformation $H^m_n$ describes the transformation
-of frame $n$ with respect to $m$.
-Therefore, given our objectives, and the frames as numbered in Figure 1, 
-we need to find $H^0_1$, $H^0_2$, $H^0_3$, and $H^3_2$.
+Now that we have assigned the frames, we can come up with some constants for
+the link lengths. Assume that link 1 is of constant length $l_1$, link 2 is 
+of constant length $l_2$, and link 3 is of constant length $l_3$. Additionally,
+we are dealing with 3 revolute joints, so when the first revolute joint moves,
+an angle subtended by $x_1$ from $x_0$ is the variable $\theta_1$. Similarly,
+when the second and third revolute joints move, we get a variable angles of
+$\theta_2$ and $\theta_3$.
+
+\subsubsection{Find H matrices}
+We can now start formulating our homogeneous transformation matrices. We first
+form the rotation matrices, using the following MATLAB function.
 
 \subsection{Compute all rotation matrices}
 As shown in the figure, there are no rotational differences between frames
