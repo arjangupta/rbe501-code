@@ -177,22 +177,23 @@ of our objective.
 \subsection{Result for Problem 3--2}
 
 For Problem 3--2, we obtained our final result by multiplying all three H matrices
-that we obtained in the Materials and Methods section. We obtained the following
+that we obtained in the Materials and Methods section. Hence, we obtained the following
 matrix,
 \[
+    H^0_3 =
     \begin{bmatrix}
     \sigma_1  & 0 & \sigma_5  & \lambda_1 \\
     0 & 1 & 0 & 0\\
-     & 0 & \sigma_1  & \lambda_2 \\
+    \sigma_4 & 0 & \sigma_1  & \lambda_2 \\
     0 & 0 & 0 & 1
     \end{bmatrix}
 \]
 
 where,
 \begin{multline*}
-    \lambda_1 = L_1 \,\cos \left(\theta_1 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sigma_2 +\\L_3 \,\sin \left(\theta_3 \right)\,\sigma_3 +L_2 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)\\+L_2 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
+    \lambda_1 = L_1 \,\cos \left(\theta_1 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sigma_2 \\+L_3 \,\sin \left(\theta_3 \right)\,\sigma_3 +L_2 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)\\+L_2 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
     \\
-    \lambda_2 = L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 +L_3 \,\sin \left(\theta_3 \right)\,\sigma_2 +\\L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
+    \lambda_2 = L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 +L_3 \,\sin \left(\theta_3 \right)\,\sigma_2 \\+L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
 \end{multline*}
 
 \begin{align*}
@@ -203,28 +204,33 @@ where,
     \sigma_5 &= \cos \left(\theta_3 \right)\,\sigma_3 +\sin \left(\theta_3 \right)\,\sigma_2
 \end{align*}
 
+\subsection{Result for Problem 3--5}
+
+The result is given here.
+
 \section{Discussion}
-In the opinion of the author, this problem is very practical
-in real-world robotics. If a 3-DOF robotic arm is being operated
-(which seems to be the case in Figure 1), then one of the modern 
-ways to monitor the arm would be to use computer vision via a camera.
-An overhead camera provides a good perspective in such a case, where
-the robot perhaps needs to perform tasks on the table-top. Some examples
-of table-top tasks could be moving chess pieces, manufacturing assembly,
-and other pick-and-place operations. In the case of this problem, the
-robot is doing something with a cube.\\
-\vspace{0in}\\
-Generally, in such a setup, it is imperative to know the relative transformations
-between the frames of the robot, table, and the camera in order for a computer
-to properly command the controllers of the robot to perform accurate and precise
-tasks. For a simple example, if the computer wants to command the robot to go
-to a location on the table, first the computer needs to compute that location using
-$H^3_1$. Next, the computer needs to use $H^0_1$ to help the robot know about
-that location.\\
-\vspace{0in}\\
-Calibration and frame transformations are very important in order for a robot
-to perform any real-world tasks. As for students of robotics, our spatial and
-geometric understanding of robotics is tested by this type of problem.
+In the opinion of the author, this homework problem set was insightful. The
+first problem proved that we do not need to always use the DH convention
+when solving for forward kinematics in robotic manipulators. In fact, when
+using tools like MATLAB, to using a non-DH method of
+computing the forward kinematics is no more complex than using the DH method
+itself.\\\\
+The second problem reinforced our learnings from RBE 500. We used the DH
+convention heavily in that class, so it was great to revisit that foundation
+as we move forward in this class.\\\\
+A topic for further consideration could be, when would one prefer to use
+a non-DH method over the DH method? The DH convention can provide a minimal
+and efficient way to represent and compute the relationship between the base
+frame and the end effector in many cases, because it reduces the number of
+variables involved from 6 to 4. However, suppose we want to model the
+differential kinematics of a manipulator. The screw-based theory~\cite{Rocha2011}
+can provide advantages in such a case. It was found that, when
+various kinematic modelings for common manipulator configurations where
+compared, the screw-based theory did not provide any disadvantages in any
+case. The one noticeable difference was that it provided superior flexibility
+when differential kinematics was compared.
+The parameter identification is also a bit simpler in the screw-based theory, as
+compared to the DH-convention.
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
