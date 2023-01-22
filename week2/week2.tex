@@ -369,25 +369,28 @@ which is a solution for forward kinematics.
 In the opinion of the author, this homework problem set was insightful. The
 first problem proved that we do not need to always use the DH convention
 when solving for forward kinematics in robotic manipulators. In fact, when
-using tools like MATLAB, executing a non-DH method of
+using tools like MATLAB, manually executing a non-DH method of
 computing the forward kinematics is no more complex than using the DH method
-itself.\\\\
+itself.\\
 The second problem reinforced our learnings from RBE 500. We used the DH
 convention heavily in that class, so it was great to revisit that foundation
-as we move forward in this class.\\\\
+as we move forward in this class.\\
 A topic for further consideration could be, when would one prefer to use
 a non-DH method over the DH method? The DH convention can provide a minimal
 and efficient way to represent and compute the relationship between the base
 frame and the end effector in many cases, because it reduces the number of
 variables involved from 6 to 4. However, suppose we want to model the
 differential kinematics of a manipulator. The screw-based theory~\cite{Rocha2011}
-can provide advantages in such a case. It was found that, when
+can provide advantages in such a case. In the referenced paper for screw-based
+theory, it was found that, when
 various kinematic modelings for common manipulator configurations where
 compared, the screw-based theory did not provide any disadvantages in any
 case. The one noticeable difference was that it provided superior flexibility
 when differential kinematics was compared.
 The parameter identification is also a bit simpler in the screw-based theory, as
-compared to the DH-convention.
+compared to the DH-convention.\\
+It was a great exercise the solve this week's problem set, and the author thanks
+the Professor for this.
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
