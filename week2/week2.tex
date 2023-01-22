@@ -109,12 +109,11 @@ In our Live Script, we use the following MATLAB code to formulate $R_y$.
 
 \lstinputlisting{formulate_ry.m}
 
-Since all our link lengths are constants along the x-axis of the
-respective frames, they take on the following form.
+All our link lengths take on the following form.
 
 \begin{equation*}
     d = \begin{bmatrix}
-        L \cos\theta\\0\\L\sin\theta
+        L \cos\theta\\0\\-L\sin\theta
     \end{bmatrix}
 \end{equation*}
 
@@ -139,7 +138,7 @@ we found the following H matrices for the frame-to-frame transformations.
     \begin{bmatrix}
         \cos\theta _{1} & 0 & \sin\theta _{1} & L_{1} \cos\theta_1\\
         0 & 1 & 0 & 0\\
-        -\sin\theta _{1} & 0 & \cos\theta_{1} & L_1 \sin\theta_1\\
+        -\sin\theta _{1} & 0 & \cos\theta_{1} & -L_1 \sin\theta_1\\
         0 & 0 & 0 & 1
     \end{bmatrix}
 \]
@@ -153,7 +152,7 @@ we found the following H matrices for the frame-to-frame transformations.
     \begin{bmatrix}
         \cos\theta _{2} & 0 & \sin\theta _{2} & L_{2} \cos\theta_2\\
         0 & 1 & 0 & 0\\
-        -\sin\theta _{2} & 0 & \cos\theta_{2} & L_2 \sin\theta_2\\
+        -\sin\theta _{2} & 0 & \cos\theta_{2} & -L_2 \sin\theta_2\\
         0 & 0 & 0 & 1
     \end{bmatrix}
 \]
@@ -167,7 +166,7 @@ we found the following H matrices for the frame-to-frame transformations.
     \begin{bmatrix}
         \cos\theta _{3} & 0 & \sin\theta _{3} & L_{3} \cos\theta_3\\
         0 & 1 & 0 & 0\\
-        -\sin\theta _{3} & 0 & \cos\theta_{3} & L_3 \sin\theta_3\\
+        -\sin\theta _{3} & 0 & \cos\theta_{3} & -L_3 \sin\theta_3\\
         0 & 0 & 0 & 1
     \end{bmatrix}
 \]
@@ -306,10 +305,10 @@ matrix,
 \[
     H^0_3 =
     \begin{bmatrix}
-    \sigma_1  & 0 & \sigma_5  & \lambda_1 \\
-    0 & 1 & 0 & 0\\
-    \sigma_4 & 0 & \sigma_1  & \lambda_2 \\
-    0 & 0 & 0 & 1
+        \sigma_1  & 0 & \sigma_5  & L_1 \,\cos \left(\theta_1 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sigma_2 -L_3 \,\sin \left(\theta_3 \right)\,\sigma_3 +L_2 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)-L_2 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
+        0 & 1 & 0 & 0\\
+        \sigma_4  & 0 & \sigma_1  & -L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 -L_3 \,\sin \left(\theta_3 \right)\,\sigma_2 -L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)\\
+        0 & 0 & 0 & 1
     \end{bmatrix}
 \]
 
@@ -320,7 +319,7 @@ where,
 \begin{multline*}
     \lambda_2 = L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 +L_3 \,\sin \left(\theta_3 \right)\,\sigma_2 \\+L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
 \end{multline*}
-\hspace{10pt} and,
+and,
 \begin{align*}
     \sigma_1 &=\cos \left(\theta_3 \right)\,\sigma_2 -\sin \left(\theta_3 \right)\,\sigma_3 \\
     \sigma_2 &=\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
