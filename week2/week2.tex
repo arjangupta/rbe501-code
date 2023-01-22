@@ -335,22 +335,28 @@ For Problem 3--5, we obtained our final result by multiplying all three $A_i$ ma
 that we obtained in the Materials and Methods section. Hence, we obtained the following
 matrix,
 
-$\begin{array}{l}
+\[
+    T^0_3 =
     \begin{bmatrix}
-    \sigma_1  & -\sigma_3 -\sigma_2  & 0 & L_3 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_3 \right)-\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_3 \right)\\
-    \sigma_3 +\sigma_2  & \sigma_1  & 0 & \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_3 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sin \left(\theta_1 \right)\\
-    0 & 0 & 1 & 0\\
-    0 & 0 & 0 & 1
+        \sigma_1  & -\cos \left(\theta_1 \right)\,\sigma_2 -\sigma_3 \,\sin \left(\theta_1 \right) & 0 & \lambda_1\\
+        \cos \left(\theta_1 \right)\,\sigma_2 +\sigma_3 \,\sin \left(\theta_1 \right) & \sigma_1  & 0 & \lambda_2\\
+        0 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1
     \end{bmatrix}\\
-    \mathrm{}\\
-    \textrm{where}\\
-    \mathrm{}\\
-    \;\;\sigma_1 =\cos \left(\theta_1 \right)\,\cos \left(\theta_3 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_3 \right)\\
-    \mathrm{}\\
-    \;\;\sigma_2 =\cos \left(\theta_3 \right)\,\sin \left(\theta_1 \right)\\
-    \mathrm{}\\
-    \;\;\sigma_3 =\cos \left(\theta_1 \right)\,\sin \left(\theta_3 \right)
-    \end{array}$
+\]
+where,
+\begin{multline*}
+    \lambda_1 = L_3 \,\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sigma_2
+    \\
+    \\
+    \lambda_2 = \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sigma_2 +L_3 \,\sigma_3 \,\sin \left(\theta_1 \right)
+\end{multline*}
+and,
+\begin{align*}
+    \sigma_1 =\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,\sigma_2 \\
+    \sigma_2 =\sin \left(\theta_3 +\frac{\pi }{2}\right)\\
+    \sigma_3 =\cos \left(\theta_3 +\frac{\pi }{2}\right)
+\end{align*}
 
 \section{Discussion}
 In the opinion of the author, this homework problem set was insightful. The
