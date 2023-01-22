@@ -26,7 +26,7 @@
      showgrid="false"
      inkscape:zoom="2.4302469"
      inkscape:cx="410.04064"
-     inkscape:cy="548.70968"
+     inkscape:cy="548.2982"
      inkscape:window-width="1920"
      inkscape:window-height="1055"
      inkscape:window-x="0"
@@ -310,7 +310,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer 2"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <path
        style="fill:none;stroke:#c80000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
        d="M 58.817381,146.09567 72.4816,146.36049"
