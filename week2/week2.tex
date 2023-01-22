@@ -291,11 +291,14 @@ Using this function in our MATLAB Live Script, we produce the following A matric
         \end{bmatrix}
 \]
 
+Now we are ready to multiply these matrices to obtain the final result
+of our objective.
+
 \section{Results}
 
 \subsection{Result for Problem 3--2}
 
-For Problem 3--2, we obtained our final result by multiplying all three H matrices
+For Problem 3--2, we obtained our final result by multiplying all three $H$ matrices
 that we obtained in the Materials and Methods section. Hence, we obtained the following
 matrix,
 \[
@@ -328,7 +331,26 @@ alongside this report.
 
 \subsection{Result for Problem 3--5}
 
-The result is given here.
+For Problem 3--5, we obtained our final result by multiplying all three $A_i$ matrices
+that we obtained in the Materials and Methods section. Hence, we obtained the following
+matrix,
+
+$\begin{array}{l}
+    \left(\begin{array}{cccc}
+    \sigma_1  & -\sigma_3 -\sigma_2  & 0 & L_3 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_3 \right)-\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_3 \right)\\
+    \sigma_3 +\sigma_2  & \sigma_1  & 0 & \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_3 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sin \left(\theta_1 \right)\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array}\right)\\
+    \mathrm{}\\
+    \textrm{where}\\
+    \mathrm{}\\
+    \;\;\sigma_1 =\cos \left(\theta_1 \right)\,\cos \left(\theta_3 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_3 \right)\\
+    \mathrm{}\\
+    \;\;\sigma_2 =\cos \left(\theta_3 \right)\,\sin \left(\theta_1 \right)\\
+    \mathrm{}\\
+    \;\;\sigma_3 =\cos \left(\theta_1 \right)\,\sin \left(\theta_3 \right)
+    \end{array}$
 
 \section{Discussion}
 In the opinion of the author, this homework problem set was insightful. The
