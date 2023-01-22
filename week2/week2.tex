@@ -253,10 +253,23 @@ $A_i$ matrix is,
     \end{bmatrix}
 \]
 
-Where $c_{\theta_i}$ is $\cos{\theta_i}$.
+Where $c_{\theta_i}$ is $\cos{\theta_i}$, $s_{\theta_i}$ is $\sin{\theta_i}$,
+$c_{\alpha_i}$ is $\cos{\alpha_i}$, and $s_{\alpha_i}$ is $\sin{\alpha_i}$.
 We can write a MATLAB function for this $A_i$ matrix, as follows.
 
+\lstinputlisting{compute_dh_a.m}
 
+Using this function in our MATLAB Live Script, we produce the following A matrices.
+
+\[
+    A_1 =
+    \begin{bmatrix}
+        \cos \left(\theta_1 \right) & 0 & -\sin \left(\theta_1 \right) & 0\\
+        \sin \left(\theta_1 \right) & 0 & \cos \left(\theta_1 \right) & 0\\
+        0 & -1 & 0 & 0\\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+\]
 
 \section{Results}
 
