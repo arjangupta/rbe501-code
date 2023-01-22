@@ -187,23 +187,24 @@ DH Coordinate Frame Assumptions are,
     \item \textbf{(DH1)} The axis $x_1$ is perpendicular to the axis $z_0$.
     \item \textbf{(DH2)} The axis $x_1$ intersects the axis $z_0$.
 \end{itemize}
-
+\vspace{0.1in}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{dh-frames.png}
     \caption{Coordinate frames satisfying DH assumptions}
 \end{figure}
+\vspace{0.1in}
 \subsubsection{Assign frames}
 The first step toward solving our problem is to redraw the robot
 manipulator in symbolic
 form, and assign frames for links 0 through 3. Since we are following the DH assumptions,
 we must follow the frame assignment style shown in Figure 4, which
 is from our textbook~\cite{Spong2006}. Our redrawn figure is shown in Figure 5.\\
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=3.4in]{prob3_5_redraw}
     \caption{Figure 2 redrawn in symbolic form with frames assigned}
-\end{figure}
+\end{figure}\\
 As shown, frame 0 ($x_0 y_0 z_0$) is assigned at the first joint (revolute), frame 1
 ($x_1 y_1 z_1$) is assigned at the
 second joint (prismatic), and frame 2 ($x_2 y_2 z_2$)
