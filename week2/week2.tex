@@ -223,7 +223,7 @@ the $\alpha_i$, $a_i$, $\theta_i$, $d_i$ quantities for each link.
         Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
         \hline\hline
         1 & $-90\degree$ & 0 & $\theta_1$ & 0 \\
-        2 & $90\degree$ & $L_1 + q_2$ & 0 & 0 \\
+        2 & $90\degree$ & 0 & 0 & $L_1 + q_2$ \\
         3 & 0 & $L_3$ & $\theta_3$ & 0\\
         \hline
         \end{tabular}
@@ -264,9 +264,19 @@ Using this function in our MATLAB Live Script, we produce the following A matric
 \[
     A_1 =
     \begin{bmatrix}
-        \cos \left(\theta_1 \right) & 0 & -\sin \left(\theta_1 \right) & 0\\
-        \sin \left(\theta_1 \right) & 0 & \cos \left(\theta_1 \right) & 0\\
+        \cos \theta_1 & 0 & -\sin \theta_1 & 0\\
+        \sin \theta_1 & 0 & \cos  \theta_1 & 0\\
         0 & -1 & 0 & 0\\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+\]
+
+\[
+    A_2 = 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 0 & -1 & 0\\
+        0 & 1 & 0 & L_1 + q_2 \\
         0 & 0 & 0 & 1
         \end{bmatrix}
 \]
