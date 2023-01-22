@@ -205,13 +205,13 @@ is from our textbook~\cite{Spong2006}. Our redrawn figure is shown in Figure 5.\
     \includegraphics[width=3.4in]{prob3_5_redraw}
     \caption{Figure 2 redrawn in symbolic form with frames assigned}
 \end{figure}\\
-As shown, frame 0 ($x_0 y_0 z_0$) is assigned at the first joint (revolute), frame 1
-($x_1 y_1 z_1$) is assigned at the
-second joint (prismatic), and frame 2 ($x_2 y_2 z_2$)
+As shown, frame 0 ($x_0 y_0 z_0$) is assigned at the first joint (revolute). Frame 1
+($x_1 y_1 z_1$) is also assigned at the
+first joint in order to have DH assumptions satisfied. Frame 2 ($x_2 y_2 z_2$)
  is assigned at third joint (revolute). Frame 3 ($x_3 y_3 z_3$) is assigned at
 the end of link 3.\\
 
-\subsubsection{Create DH table}
+\subsubsection{Create DH table and set variables/constants}
 Now that we have assigned the frames, we can use Figure 4 to write
 the $\alpha_i$, $a_i$, $\theta_i$, $d_i$ quantities for each link.
 
@@ -222,15 +222,21 @@ the $\alpha_i$, $a_i$, $\theta_i$, $d_i$ quantities for each link.
         \hline
         Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
         \hline\hline
-        1 & $-90\degree$ & 0 & $-\theta_1$ & $L_1$ \\
-        2 & $90\degree$ & 0 & $-90\degree$ & $d_2$\\
-        3 & 0 & 0 & 0 & $d_3$\\
+        1 & $-90\degree$ & 0 & $\theta_1$ & 0 \\
+        2 & $90\degree$ & $L_1 + q_2$ & 0 & 0 \\
+        3 & 0 & $L_3$ & $\theta_3$ & 0\\
         \hline
         \end{tabular}
         }
     \end{center}
     \caption{Denavit-Hartenberg table for Problem 3--5}
 \end{table}
+
+As seen in Table 1, we have chosen $L_1$ and $L_3$ to describe the constant link
+lengths of links 1 and 3, respectively. Additionally, $q_2$ describes the variable
+link length of link 2 (because of joint 2 being a prismatic joint).
+Furthermore, $\theta_1$ and $\theta_3$ describe the
+variable angles of revolute joints 1 and 3, respectively.
 
 \section{Results}
 
