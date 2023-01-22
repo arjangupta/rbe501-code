@@ -209,7 +209,7 @@ As shown, frame 0 ($x_0 y_0 z_0$) is assigned at the first joint (revolute). Fra
 ($x_1 y_1 z_1$) is also assigned at the
 first joint in order to have DH assumptions satisfied. Frame 2 ($x_2 y_2 z_2$)
  is assigned at third joint (revolute). Frame 3 ($x_3 y_3 z_3$) is assigned at
-the end of link 3.\\
+the end of link 3, in a way that also satisfies DH assumptions.\\
 
 \subsubsection{Create DH table and set variables/constants}
 Now that we have assigned the frames, we can use Figure 4 to write
@@ -217,14 +217,14 @@ the $\alpha_i$, $a_i$, $\theta_i$, $d_i$ quantities for each link.
 
 \begin{table}[h!]
     \begin{center}
-        \resizebox{0.7\columnwidth}{!}{%
+        \resizebox{0.8\columnwidth}{!}{%
         \begin{tabular}{||c|c|c|c|c||}
         \hline
         Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
         \hline\hline
         1 & $-90\degree$ & 0 & $\theta_1$ & 0 \\
         2 & $90\degree$ & 0 & 0 & $L_1 + q_2$ \\
-        3 & 0 & $L_3$ & $\theta_3$ & 0\\
+        3 & 0 & $L_3$ & $90\degree + \theta_3$ & 0\\
         \hline
         \end{tabular}
         }
@@ -284,8 +284,8 @@ Using this function in our MATLAB Live Script, we produce the following A matric
 \[
     A_3 =
     \begin{bmatrix}
-        \cos \theta_3 & -\sin \theta_3 & 0 & L_3 \,\cos \theta_3\\
-        \sin \theta_3 & \cos  \theta_3 & 0 & L_3 \,\sin \theta_3\\
+        \cos \left(\theta_3 +\frac{\pi }{2}\right) & -\sin \left(\theta_3 +\frac{\pi }{2}\right) & 0 & L_3 \,\cos \left(\theta_3 +\frac{\pi }{2}\right)\\
+        \sin \left(\theta_3 +\frac{\pi }{2}\right) & \cos \left(\theta_3 +\frac{\pi }{2}\right) & 0 & L_3 \,\sin \left(\theta_3 +\frac{\pi }{2}\right)\\
         0 & 0 & 1 & 0\\
         0 & 0 & 0 & 1
         \end{bmatrix}
@@ -336,12 +336,12 @@ that we obtained in the Materials and Methods section. Hence, we obtained the fo
 matrix,
 
 $\begin{array}{l}
-    \left(\begin{array}{cccc}
+    \begin{bmatrix}
     \sigma_1  & -\sigma_3 -\sigma_2  & 0 & L_3 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_3 \right)-\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_3 \right)\\
     \sigma_3 +\sigma_2  & \sigma_1  & 0 & \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_3 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sin \left(\theta_1 \right)\\
     0 & 0 & 1 & 0\\
     0 & 0 & 0 & 1
-    \end{array}\right)\\
+    \end{bmatrix}\\
     \mathrm{}\\
     \textrm{where}\\
     \mathrm{}\\
