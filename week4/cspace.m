@@ -1,5 +1,5 @@
 
-fig = uifigure('Position',[100 100 500 315]);
+fig = uifigure('Position',[100 100 600 600]);
 
 grid1 = uigridlayout(fig,[2 1]);
 
