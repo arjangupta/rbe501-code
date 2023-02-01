@@ -20,12 +20,10 @@ sld2 = uislider(slider_grid,...
 
 % grid1.ColumnWidth = {220,'1x'};
 
-ax = uiaxes(grid1);
+ax = uiaxes(grid1,"XLim",[0 360],"YLim",[0 360]);
 y = 180;
 x = 180;
 config_space = scatter(ax,x,y,'r+');
-% xlim([0 360])
-% ylim([0 360])
 
 function printValue1(sld)
     disp(sld.Value)
