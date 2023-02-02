@@ -19,18 +19,22 @@ body2.Joint = jnt2;
 addBody(twolink_robot, body1, 'base');
 addBody(twolink_robot, body2, 'body1');
 showdetails(twolink_robot)
+% ax1 = uiaxes(plot_grid)
+% ax1.Properties = ''
+show(twolink_robot)
+view(2)
 
 fig = uifigure('Position',[100 100 600 600]);
 
 grid1 = uigridlayout(fig,[2 1]);
 
-% PLOTS
-plot_panel = uipanel(grid1,"Title", "Workspace & C-Space");
-plot_grid = uigridlayout(plot_panel, [1 2]);
-ax = uiaxes(plot_grid,"XLim",[0 360],"YLim",[0 360]);
+% CSPACE PLOT
+plot_panel = uipanel(grid1,"Title", "Configuration Space");
+% plot_grid = uigridlayout(plot_panel, [1 1]);
+ax2 = uiaxes(plot_panel,"XLim",[0 360],"YLim",[0 360]);
 y = 180;
 x = 180;
-plt = scatter(ax,x,y,'b+');
+plt = scatter(ax2,x,y,'b+');
 
 % SLIDERS
 panel = uipanel(grid1, "Title", "Angle sliders");
