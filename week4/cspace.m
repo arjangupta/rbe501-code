@@ -5,10 +5,12 @@ fig = uifigure('Position',[100 100 600 600]);
 grid1 = uigridlayout(fig,[2 1]);
 
 % PLOT
-ax = uiaxes(grid1,"XLim",[0 360],"YLim",[0 360]);
+plot_panel = uipanel(grid1,"Title", "Workspace & C-Space");
+plot_grid = uigridlayout(plot_panel, [1 2]);
+ax = uiaxes(plot_grid,"XLim",[0 360],"YLim",[0 360]);
 y = 180;
 x = 180;
-plt = scatter(ax,x,y,'r+');
+plt = scatter(ax,x,y,'b+');
 
 % SLIDERS
 panel = uipanel(grid1, "Title", "Angle sliders");
