@@ -30,6 +30,10 @@ sld2 = uislider(slider_grid,...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
     'ValueChangedFcn',@(sld1,event) changeYVal(sld1, plt));
 
+myrobot = importrobot("rrbot.urdf.xacro", "urdf");
+show(myrobot)
+view(2)
+
 function changeYVal(sld, plt)
     set(plt,'YData',sld.Value);
     drawnow;
