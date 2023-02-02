@@ -23,6 +23,8 @@ addBody(twolink_robot, body2, 'body1');
 % ax1.Properties = ''
 show(twolink_robot);
 view(2)
+ax = gca;
+ax.Projection = 'orthographic';
 
 fig = uifigure('Position',[100 100 600 600]);
 
@@ -45,23 +47,29 @@ sld1 = uislider(slider_grid,...
     'Position',[100 50 150 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
-    'ValueChangedFcn',@(sld1,event) changeXVal(sld1, plt));
+    'ValueChangedFcn',@(sld1,event) changeXVal(sld1, plt, twolink_robot));
 
 sld2 = uislider(slider_grid,...
     'Value',45,...
     'Position',[100 100 150 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
-    'ValueChangedFcn',@(sld1,event) changeYVal(sld1, plt));
+    'ValueChangedFcn',@(sld1,event) changeYVal(sld1, plt, twolink_robot));
 
-function changeYVal(sld, plt)
+function changeYVal(sld, plt, robot)
     set(plt,'YData',sld.Value);
-    % show(twolink_robot,'PreservePlot',false);
+    show(robot,'PreservePlot',false);
+    view(2)
+    ax = gca;
+    ax.Projection = 'orthographic';
     drawnow;
 end
 
-function changeXVal(sld, plt)
+function changeXVal(sld, plt, robot)
     set(plt,'XData',sld.Value);
-    % show(twolink_robot,'PreservePlot',false);
+    show(robot,'PreservePlot',false);
+    view(2)
+    ax = gca;
+    ax.Projection = 'orthographic';
     drawnow;
 end
