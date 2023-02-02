@@ -29,9 +29,10 @@ view(2)
 ax = gca;
 ax.Projection = 'orthographic';
 
+% Create view for plots and sliders
 fig = uifigure('Position',[100 100 600 600]);
-
 grid1 = uigridlayout(fig,[2 1]);
+% grid1.RowHeight = {350 200};
 
 % CSPACE PLOT
 plot_panel = uipanel(grid1,"Title", "Configuration Space");
