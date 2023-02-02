@@ -21,6 +21,7 @@ addBody(twolink_robot, body2, 'body1');
 % showdetails(twolink_robot);
 % ax1 = uiaxes(plot_grid)
 % ax1.Properties = ''
+global config 
 config = homeConfiguration(twolink_robot);
 config(1).JointPosition = deg2rad(45);
 config(2).JointPosition = deg2rad(45);
@@ -51,17 +52,18 @@ sld1 = uislider(slider_grid,...
     'Position',[100 50 150 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
-    'ValueChangedFcn',@(sld1,event) changeXVal(sld1, plt, twolink_robot, config));
+    'ValueChangedFcn',@(sld1,event) changeXVal(sld1, plt, twolink_robot));
 
 sld2 = uislider(slider_grid,...
     'Value',45,...
     'Position',[100 100 150 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
-    'ValueChangedFcn',@(sld1,event) changeYVal(sld1, plt, twolink_robot, config));
+    'ValueChangedFcn',@(sld2,event) changeYVal(sld2, plt, twolink_robot));
 
-function changeYVal(sld, plt, robot, config)
+function changeYVal(sld, plt, robot)
     set(plt,'YData',sld.Value);
+    global config
     config(2).JointPosition = deg2rad(sld.Value);
     show(robot, config,'PreservePlot',false);
     view(2)
@@ -70,8 +72,9 @@ function changeYVal(sld, plt, robot, config)
     drawnow;
 end
 
-function changeXVal(sld, plt, robot, config)
+function changeXVal(sld, plt, robot)
     set(plt,'XData',sld.Value);
+    global config
     config(1).JointPosition = deg2rad(sld.Value);
     show(robot, config,'PreservePlot',false);
     view(2)
