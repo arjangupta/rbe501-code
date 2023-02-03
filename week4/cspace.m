@@ -29,6 +29,10 @@ show(twolink_robot, config);
 view(2)
 ax = gca;
 ax.Projection = 'orthographic';
+global obstacle1_x
+global obstacle1_y
+obstacle1_x = [ 0,    0,    1,  1];
+obstacle1_y = [-1, -0.5, -0.5, -1];
 draw_obstacles(ax);
 
 % Create view for plots and sliders
@@ -88,7 +92,7 @@ function changeXVal(sld, plt, robot)
 end
 
 function draw_obstacles(axis)
-    obstacle1_x = [ 0,    0,    1,  1];
-    obstacle1_y = [-1, -0.5, -0.5, -1];
+    global obstacle1_x
+    global obstacle1_y
     patch(axis,obstacle1_x,obstacle1_y,'green')
 end
