@@ -29,6 +29,7 @@ show(twolink_robot, config);
 view(2)
 ax = gca;
 ax.Projection = 'orthographic';
+draw_obstacles(ax);
 
 % Create view for plots and sliders
 fig = uifigure('Position',[100 100 600 600]);
@@ -70,6 +71,7 @@ function changeYVal(sld, plt, robot)
     ax = gca;
     ax.Projection = 'orthographic';
     drawnow;
+    draw_obstacles(ax);
 end
 
 function changeXVal(sld, plt, robot)
@@ -81,4 +83,11 @@ function changeXVal(sld, plt, robot)
     ax = gca;
     ax.Projection = 'orthographic';
     drawnow;
+    draw_obstacles(ax);
+end
+
+function draw_obstacles(axis)
+    obstacle1_x = [ 0,    0,    1,  1];
+    obstacle1_y = [-1, -0.5, -0.5, -1];
+    patch(axis,obstacle1_x,obstacle1_y,'red')
 end
