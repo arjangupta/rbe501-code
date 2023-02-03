@@ -47,8 +47,8 @@ ax2 = uiaxes(plot_panel,"XLim",[0 360],"YLim",[0 360]);
 y = 45;
 x = 45;
 plt = scatter(ax2,x,y,'b+');
-cspace_shape_x = [300 360 350];
-cspace_shape_y = [50 200 50];
+cspace_shape_x = [300 305 310 315 360 350];
+cspace_shape_y = [50 51 52 54 200 50];
 patch(ax2,cspace_shape_x,cspace_shape_y,'green');
 
 % SLIDERS
