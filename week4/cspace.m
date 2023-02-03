@@ -1,6 +1,6 @@
 close all; clear; clc;
 
-% ROBOT
+% twolink_robot
 link_length1 = 1;
 link_length2 = 1;
 theta1 = 0;
@@ -18,17 +18,24 @@ body1.Joint = jnt1;
 body2.Joint = jnt2;
 addBody(twolink_robot, body1, 'base');
 addBody(twolink_robot, body2, 'body1');
-% showdetails(twolink_robot);
-% ax1 = uiaxes(plot_grid)
-% ax1.Properties = ''
+
+% collision stuff
+for i = 1:twolink_robot.NumBodies
+    clearCollision(twolink_robot.Bodies{i})
+end
+
+collisionObj = collisionBox(1,1,1);
+addCollision(body1,collisionObj);%,[1 0 0 0; 0 1 0 2; 0 0 1 0; 0 0 0 1]);
+
 global config 
 config = homeConfiguration(twolink_robot);
 config(1).JointPosition = deg2rad(45);
 config(2).JointPosition = deg2rad(45);
-show(twolink_robot, config);
+show(twolink_robot, "Visuals", "off", "Collisions", "on");
 view(2)
 ax = gca;
 ax.Projection = 'orthographic';
+
 global obstacle1_x
 global obstacle1_y
 obstacle1_x = [ 0,    0,    1,  1];
@@ -69,11 +76,11 @@ sld2 = uislider(slider_grid,...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
     'ValueChangedFcn',@(sld2,event) changeYVal(sld2, plt, twolink_robot));
 
-function changeYVal(sld, plt, robot)
+function changeYVal(sld, plt, twolink_robot)
     set(plt,'YData',sld.Value);
     global config
     config(2).JointPosition = deg2rad(sld.Value);
-    show(robot, config,'PreservePlot',false);
+    show(twolink_robot, config,'PreservePlot',false);
     view(2)
     ax = gca;
     ax.Projection = 'orthographic';
@@ -81,11 +88,11 @@ function changeYVal(sld, plt, robot)
     draw_obstacles(ax);
 end
 
-function changeXVal(sld, plt, robot)
+function changeXVal(sld, plt, twolink_robot)
     set(plt,'XData',sld.Value);
     global config
     config(1).JointPosition = deg2rad(sld.Value);
-    show(robot, config,'PreservePlot',false);
+    show(twolink_robot, config,'PreservePlot',false);
     view(2)
     ax = gca;
     ax.Projection = 'orthographic';
