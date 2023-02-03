@@ -32,7 +32,7 @@ ax.Projection = 'orthographic';
 global obstacle1_x
 global obstacle1_y
 obstacle1_x = [ 0,    0,    1,  1];
-obstacle1_y = [-1, -0.5, -0.5, -1];
+obstacle1_y = [-2, -1.5, -1.5, -2];
 draw_obstacles(ax);
 
 % Create view for plots and sliders
@@ -47,7 +47,9 @@ ax2 = uiaxes(plot_panel,"XLim",[0 360],"YLim",[0 360]);
 y = 45;
 x = 45;
 plt = scatter(ax2,x,y,'b+');
-patch(ax2,[300 360 350],[50 200 50],'green');
+cspace_shape_x = [300 360 350];
+cspace_shape_y = [50 200 50];
+patch(ax2,cspace_shape_x,cspace_shape_y,'green');
 
 % SLIDERS
 panel = uipanel(grid1, "Title", "Angle sliders");
