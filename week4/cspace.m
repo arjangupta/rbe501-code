@@ -52,7 +52,7 @@ global cspace_shape_y
 cspace_shape_x = [x];
 cspace_shape_y = [y];
 collision_config = homeConfiguration(twolink_robot);
-for theta1 = 0:360
+for theta1 = 270:360
     collision_config(1).JointPosition = deg2rad(theta1);
     for theta2 = 0:360
         collision_config(2).JointPosition = deg2rad(theta2);
@@ -71,10 +71,10 @@ for theta1 = 0:360
     end
     fprintf("Computing collisions %d...\n",theta1);
 end
-plt = scatter(ax2,cspace_shape_x,cspace_shape_y,'g+')
+plt = scatter(ax2,cspace_shape_x,cspace_shape_y,'r','filled');
 
 % SLIDERS
-panel = uipanel(grid1, "Title", "Angle sliders");
+panel = uipanel(grid1, 'Title', 'Angle sliders');
 slider_grid = uigridlayout(panel, [2 1]);
 
 sld1 = uislider(slider_grid,...
@@ -124,7 +124,7 @@ end
 function draw_obstacles(axis)
     global obstacle1_x
     global obstacle1_y
-    patch(axis,obstacle1_x,obstacle1_y,'green')
+    patch(axis,obstacle1_x,obstacle1_y,'red')
 end
 
 function [A1, T2] = getTransformations(robot, config)
