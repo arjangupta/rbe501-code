@@ -46,10 +46,32 @@ plot_panel = uipanel(grid1,"Title", "Configuration Space");
 ax2 = uiaxes(plot_panel,"XLim",[0 360],"YLim",[0 360]);
 y = 45;
 x = 45;
-plt = scatter(ax2,x,y,'b+');
-cspace_shape_x = [300 305 310 315 360 350];
-cspace_shape_y = [50 51 52 54 200 50];
-patch(ax2,cspace_shape_x,cspace_shape_y,'green');
+% plt = scatter(ax2,x,y,'b+');
+global cspace_shape_x
+global cspace_shape_y
+cspace_shape_x = [x];
+cspace_shape_y = [y];
+collision_config = homeConfiguration(twolink_robot);
+for theta1 = 0:360
+    collision_config(1).JointPosition = deg2rad(theta1);
+    for theta2 = 0:360
+        collision_config(2).JointPosition = deg2rad(theta2);
+        [A1,T2] = getTransformations(twolink_robot, collision_config);
+        link1_x = A1(1,4);
+        link1_y = A1(2,4);
+        link2_x = T2(1,4);
+        link2_y = T2(2,4);
+        lowest_y = min([link1_y, link2_y]);
+        lowest_x = min([link1_x, link2_x]);
+        highest_x = max([link1_x, link2_x]);
+        if (lowest_y < max(obstacle1_y) && lowest_x > min(obstacle1_x) && highest_x < max(obstacle1_x))
+            cspace_shape_x = [cspace_shape_x theta1];
+            cspace_shape_y = [cspace_shape_y theta2];
+        end
+    end
+    fprintf("Computing collisions %d...\n",theta1);
+end
+plt = scatter(ax2,cspace_shape_x,cspace_shape_y,'g+')
 
 % SLIDERS
 panel = uipanel(grid1, "Title", "Angle sliders");
@@ -70,7 +92,10 @@ sld2 = uislider(slider_grid,...
     'ValueChangedFcn',@(sld2,event) changeYVal(sld2, plt, twolink_robot));
 
 function changeYVal(sld, plt, robot)
-    set(plt,'YData',sld.Value);
+    global cspace_shape_x
+    global cspace_shape_y
+    cspace_shape_y(1) = sld.Value;
+    set(plt,'YData',cspace_shape_y);
     global config
     config(2).JointPosition = deg2rad(sld.Value);
     show(robot, config,'PreservePlot',false);
@@ -82,7 +107,10 @@ function changeYVal(sld, plt, robot)
 end
 
 function changeXVal(sld, plt, robot)
-    set(plt,'XData',sld.Value);
+    global cspace_shape_x
+    global cspace_shape_y
+    cspace_shape_x(1) = sld.Value;
+    set(plt,'XData',cspace_shape_x);
     global config
     config(1).JointPosition = deg2rad(sld.Value);
     show(robot, config,'PreservePlot',false);
@@ -97,4 +125,9 @@ function draw_obstacles(axis)
     global obstacle1_x
     global obstacle1_y
     patch(axis,obstacle1_x,obstacle1_y,'green')
+end
+
+function [A1, T2] = getTransformations(robot, config)
+    A1 = getTransform(robot, config, 'body1', 'base');
+    T2 = getTransform(robot, config, 'body2', 'base');
 end
