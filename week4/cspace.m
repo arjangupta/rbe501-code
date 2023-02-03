@@ -43,6 +43,7 @@ ax2 = uiaxes(plot_panel,"XLim",[0 360],"YLim",[0 360]);
 y = 45;
 x = 45;
 plt = scatter(ax2,x,y,'b+');
+patch(ax2,[300 360 350],[50 200 50],'green');
 
 % SLIDERS
 panel = uipanel(grid1, "Title", "Angle sliders");
@@ -89,5 +90,5 @@ end
 function draw_obstacles(axis)
     obstacle1_x = [ 0,    0,    1,  1];
     obstacle1_y = [-1, -0.5, -0.5, -1];
-    patch(axis,obstacle1_x,obstacle1_y,'red')
+    patch(axis,obstacle1_x,obstacle1_y,'green')
 end
