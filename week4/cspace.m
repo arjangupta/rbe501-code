@@ -36,9 +36,9 @@ obstacle1_y = [-2, -1.5, -1.5, -2];
 draw_obstacles(ax);
 
 % Create view for plots and sliders
-fig = uifigure('Position',[100 100 600 600]);
-grid1 = uigridlayout(fig,[2 1]);
-% grid1.RowHeight = {350 200};
+fig = uifigure('Position',[100 100 600 650]);
+grid1 = uigridlayout(fig,[3 1]);
+grid1.RowHeight = {370 120 120};
 
 % CSPACE PLOT
 plot_panel = uipanel(grid1,"Title", "Configuration Space");
@@ -49,12 +49,12 @@ x = 45;
 % plt = scatter(ax2,x,y,'b+');
 global cspace_shape_x
 global cspace_shape_y
-cspace_shape_x = [x];
-cspace_shape_y = [y];
+cspace_shape_x = x;
+cspace_shape_y = y;
 collision_config = homeConfiguration(twolink_robot);
-for theta1 = 270:360
+for theta1 = 270:300
     collision_config(1).JointPosition = deg2rad(theta1);
-    for theta2 = 0:360
+    for theta2 = 250:360
         collision_config(2).JointPosition = deg2rad(theta2);
         [A1,T2] = getTransformations(twolink_robot, collision_config);
         link1_x = A1(1,4);
@@ -74,19 +74,17 @@ end
 plt = scatter(ax2,cspace_shape_x,cspace_shape_y,'r','filled');
 
 % SLIDERS
-panel = uipanel(grid1, 'Title', 'Angle sliders');
-slider_grid = uigridlayout(panel, [2 1]);
-
-sld1 = uislider(slider_grid,...
+theta1_panel = uipanel(grid1, 'Title', 'Theta1 Angle Sweep');
+sld1 = uislider(theta1_panel,...
     'Value',45,...
-    'Position',[100 50 150 3],...
+    'Position',[100 70 360 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
     'ValueChangedFcn',@(sld1,event) changeXVal(sld1, plt, twolink_robot));
-
-sld2 = uislider(slider_grid,...
+theta2_panel = uipanel(grid1, 'Title', 'Theta2 Angle Sweep');
+sld2 = uislider(theta2_panel,...
     'Value',45,...
-    'Position',[100 100 150 3],...
+    'Position',[100 70 360 3],...
     'Limits',[0 360],...
     'MajorTicks',[0 45 90 135 180 225 270 315 360],...
     'ValueChangedFcn',@(sld2,event) changeYVal(sld2, plt, twolink_robot));
