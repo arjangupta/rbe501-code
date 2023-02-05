@@ -68,7 +68,6 @@ for theta1 = 220:5:360
             cspace_shape_y = [cspace_shape_y theta2];
         end
     end
-    fprintf("Computing collisions %d...\n",theta1);
 end
 plt = scatter(ax2,cspace_shape_x,cspace_shape_y,'r','filled');
 
