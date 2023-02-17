@@ -6,12 +6,13 @@ gray_airway = rgb2gray(airway);
 inverted_airway = gray_airway == 0;
 
 % Create occupancy grid
-occGrid = binaryOccupancyMap(inverted_airway);
+resolution = 1000;
+occGrid = binaryOccupancyMap(inverted_airway, resolution);
 show(occGrid)
 
 % Set start and goal poses
-start = [745,762,-pi/2];
-goal = [550, 668, pi];
+start = [745/resolution,762/resolution,0];
+goal = [415/resolution, 660/resolution,0];
 
 % Show start and goal positions of robot
 hold on
@@ -27,7 +28,7 @@ hold off
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
 ss = stateSpaceDubins(bounds);
-ss.MinTurningRadius = 0.4;
+ss.MinTurningRadius = 0.04;
 
 % Plan the path
 stateValidator = validatorOccupancyMap(ss); 
@@ -35,8 +36,8 @@ stateValidator.Map = occGrid;
 stateValidator.ValidationDistance = 0.05;
 
 planner = plannerRRT(ss,stateValidator);
-planner.MaxConnectionDistance = 2.0;
-planner.MaxIterations = 30000;
+planner.MaxConnectionDistance = 0.05;
+planner.MaxIterations = 5000;
 
 planner.GoalReachedFcn = @exampleHelperCheckIfGoal;
 
