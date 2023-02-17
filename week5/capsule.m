@@ -11,8 +11,8 @@ occGrid = binaryOccupancyMap(inverted_airway, resolution);
 show(occGrid)
 
 % Set start and goal poses
-start = [745/resolution,762/resolution,0];
-goal = [415/resolution, 660/resolution,0];
+start = [745/resolution,762/resolution,-pi];
+goal = [415/resolution, 660/resolution,pi];
 
 % Show start and goal positions of robot
 hold on
@@ -20,9 +20,9 @@ plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
 
 % Show start and goal headings.
-r = 0.5;
-plot([start(1),start(1) + r*cos(start(3))],[start(2),start(2) + r*sin(start(3))],'r-')
-plot([goal(1),goal(1) + r*cos(goal(3))],[goal(2),goal(2) + r*sin(goal(3))],'m-')
+% r = 0.5;
+% plot([start(1),start(1) + r*cos(start(3))],[start(2),start(2) + r*sin(start(3))],'r-')
+% plot([goal(1),goal(1) + r*cos(goal(3))],[goal(2),goal(2) + r*sin(goal(3))],'m-')
 hold off
 
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
