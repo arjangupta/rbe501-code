@@ -37,11 +37,11 @@ stateValidator.ValidationDistance = 0.05;
 
 planner = plannerRRT(ss,stateValidator);
 planner.MaxConnectionDistance = 0.05;
-planner.MaxIterations = 5000;
+planner.MaxIterations = 10000;
 
 planner.GoalReachedFcn = @exampleHelperCheckIfGoal;
 
-rng default
+rng shuffle
 
 [pthObj, solnInfo] = plan(planner,start,goal);
 
@@ -51,9 +51,13 @@ hold on
 % Plot entire search tree.
 plot(solnInfo.TreeData(:,1),solnInfo.TreeData(:,2),'.-');
 
-% Interpolate and plot path.
-interpolate(pthObj,300)
-plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
+if pthObj.NumStates > 0
+    % Interpolate and plot path.
+    interpolate(pthObj,300)
+    plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
+else
+    disp("No path solution found.")
+end
 
 % Show start and goal in grid map.
 plot(start(1),start(2),'ro')
