@@ -1,10 +1,11 @@
 clear; close all; clc;
 
-total_trials = 20;
+total_trials = 24;
 solutions = 0;
 
+% fullfig
 for i = 1:total_trials
-    subplot(4,5,i);
+    subplot(4,6,i);
     fprintf("Running trial #%d... ", i);
     solutionFound = capsule;
     if solutionFound
