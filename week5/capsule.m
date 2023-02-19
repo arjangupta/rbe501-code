@@ -14,11 +14,6 @@ show(occGrid)
 start = [745/resolution,762/resolution,-pi];
 goal = [415/resolution, 660/resolution,pi];
 
-% Show start and goal positions of robot
-% hold on
-plot(start(1),start(2),'ro')
-plot(goal(1),goal(2),'mo')
-
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
 ss = stateSpaceReedsShepp(bounds);
@@ -58,5 +53,5 @@ end
 % Show start and goal in grid map.
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
-% hold off
+hold off
 end

@@ -1,6 +1,6 @@
 clear; close all; clc;
 
-total_trials = 20;
+total_trials = 10;
 solutions = 0;
 
 for i = 1:total_trials
