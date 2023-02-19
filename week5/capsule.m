@@ -27,7 +27,7 @@ hold off
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
 ss = stateSpaceReedsShepp(bounds);
-ss.MinTurningRadius = 80/resolution;
+ss.MinTurningRadius = 20/resolution;
 
 % Plan the path
 stateValidator = validatorOccupancyMap(ss); 
