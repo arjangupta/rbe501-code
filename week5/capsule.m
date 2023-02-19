@@ -18,12 +18,6 @@ goal = [415/resolution, 660/resolution,pi];
 hold on
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
-    
-% Show start and goal headings.
-% r = 0.5;
-% plot([start(1),start(1) + r*cos(start(3))],[start(2),start(2) + r*sin(start(3))],'r-')
-% plot([goal(1),goal(1) + r*cos(goal(3))],[goal(2),goal(2) + r*sin(goal(3))],'m-')
-hold off
 
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
@@ -64,5 +58,5 @@ end
 % Show start and goal in grid map.
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
-hold off
+% hold off
 end
