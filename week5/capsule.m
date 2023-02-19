@@ -39,7 +39,7 @@ planner = plannerRRT(ss,stateValidator);
 planner.MaxConnectionDistance = 0.005;
 planner.MaxIterations = 6000;
 
-planner.GoalReachedFcn = @exampleHelperCheckIfGoal;
+planner.GoalReachedFcn = @checkIfReachedGoal;
 
 rng shuffle
 
@@ -64,7 +64,7 @@ plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
 hold off
 
-function isReached = exampleHelperCheckIfGoal(planner, goalState, newState)
+function isReached = checkIfReachedGoal(planner, goalState, newState)
     isReached = false;
     threshold = 0.007;
     planner.StateSpace.distance(newState, goalState)
