@@ -1,5 +1,4 @@
-clear all; close all; clc;
-
+function capsule()
 % Load in the airway image, transform to grayscale and invert it
 [airway,color_map, transp] = imread("939-Oblique.png");
 gray_airway = rgb2gray(airway);
@@ -28,16 +27,16 @@ hold off
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
 ss = stateSpaceReedsShepp(bounds);
-ss.MinTurningRadius = 0.008;
+ss.MinTurningRadius = 80/resolution;
 
 % Plan the path
 stateValidator = validatorOccupancyMap(ss); 
 stateValidator.Map = occGrid;
-stateValidator.ValidationDistance = 0.001;
+stateValidator.ValidationDistance = 10/resolution;
 
 planner = plannerRRT(ss,stateValidator);
-planner.MaxConnectionDistance = 0.005;
-planner.MaxIterations = 6000;
+planner.MaxConnectionDistance = 50/resolution;
+planner.MaxIterations = 9000;
 
 planner.GoalReachedFcn = @checkIfReachedGoal;
 
@@ -63,13 +62,4 @@ end
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
 hold off
-
-function isReached = checkIfReachedGoal(planner, goalState, newState)
-    isReached = false;
-    threshold = 0.007;
-    planner.StateSpace.distance(newState, goalState)
-%     if planner.StateSpace.
-    if planner.StateSpace.distance(newState, goalState) < threshold
-        isReached = true;
-    end
 end
