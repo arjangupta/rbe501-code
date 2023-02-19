@@ -10,7 +10,6 @@ for i = 1:total_trials
         solutions = solutions + 1;
     end
     fprintf("\n");
-    hold off;
 end
 
 fprintf("Success rate: %f\n", solutions/total_trials);

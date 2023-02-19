@@ -15,7 +15,7 @@ start = [745/resolution,762/resolution,-pi];
 goal = [415/resolution, 660/resolution,pi];
 
 % Show start and goal positions of robot
-hold on
+% hold on
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
 
@@ -49,7 +49,7 @@ if pthObj.NumStates > 0
     % Interpolate and plot path.
     interpolate(pthObj,300)
     plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
-    fprintf("Solution found.")
+    fprintf("Path found.")
 else
     fprintf("No path solution found.")
     solutionFound = false;
