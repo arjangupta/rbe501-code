@@ -6,7 +6,7 @@ gray_airway = rgb2gray(airway);
 inverted_airway = gray_airway == 0;
 
 % Create occupancy grid
-resolution = 1000;
+resolution = 8000;
 occGrid = binaryOccupancyMap(inverted_airway, resolution);
 show(occGrid)
 
@@ -28,20 +28,20 @@ hold off
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
 ss = stateSpaceDubins(bounds);
-ss.MinTurningRadius = 0.04;
+ss.MinTurningRadius = 0.004;
 
 % Plan the path
 stateValidator = validatorOccupancyMap(ss); 
 stateValidator.Map = occGrid;
-stateValidator.ValidationDistance = 0.05;
+stateValidator.ValidationDistance = 0.005;
 
 planner = plannerRRT(ss,stateValidator);
-planner.MaxConnectionDistance = 0.05;
-planner.MaxIterations = 10000;
+planner.MaxConnectionDistance = 0.005;
+planner.MaxIterations = 6000;
 
 planner.GoalReachedFcn = @exampleHelperCheckIfGoal;
 
-rng shuffle
+rng default
 
 [pthObj, solnInfo] = plan(planner,start,goal);
 
@@ -66,7 +66,8 @@ hold off
 
 function isReached = exampleHelperCheckIfGoal(planner, goalState, newState)
     isReached = false;
-    threshold = 0.1;
+    threshold = 0.01;
+    planner.StateSpace.distance(newState, goalState)
     if planner.StateSpace.distance(newState, goalState) < threshold
         isReached = true;
     end
