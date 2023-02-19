@@ -1,3 +1,3 @@
-clear all; close all; clc;
+clear; close all; clc;
 
 capsule
