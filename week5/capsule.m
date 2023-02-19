@@ -55,8 +55,9 @@ if pthObj.NumStates > 0
     % Interpolate and plot path.
     interpolate(pthObj,300)
     plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
+    fprintf("Solution found.")
 else
-    disp("No path solution found.")
+    fprintf("No path solution found.")
     solutionFound = false;
 end
 
