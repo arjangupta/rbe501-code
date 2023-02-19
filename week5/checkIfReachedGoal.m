@@ -3,7 +3,6 @@ function isReached = checkIfReachedGoal(planner, goalState, newState)
     isReached = false;
     threshold = 20/resolution;
     planner.StateSpace.distance(newState, goalState)
-%     if planner.StateSpace.
     if planner.StateSpace.distance(newState, goalState) < threshold
         isReached = true;
     end
