@@ -18,7 +18,7 @@ start = [randi([685,800])/resolution, 750/resolution, (randi(200)/100)*pi];
 leftorRight = randi(2);
 goal = zeros(1,3);
 if leftorRight == 1
-    goal = [randi([410,445])/resolution, 660/resolution, (randi(200)/100)*pi];
+    goal = [randi([415,445])/resolution, 660/resolution, (randi(200)/100)*pi];
 else
     goal = [randi([540,560])/resolution, 660/resolution, (randi(200)/100)*pi];
 end
