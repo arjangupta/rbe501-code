@@ -31,7 +31,7 @@ ss.MinTurningRadius = 20/resolution;
 % Plan the path
 stateValidator = validatorOccupancyMap(ss); 
 stateValidator.Map = occGrid;
-stateValidator.ValidationDistance = 10/resolution;
+stateValidator.ValidationDistance = 5/resolution;
 
 planner = plannerRRT(ss,stateValidator);
 planner.MaxConnectionDistance = 50/resolution;
