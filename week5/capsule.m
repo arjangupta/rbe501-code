@@ -10,8 +10,10 @@ resolution = 10000;
 occGrid = binaryOccupancyMap(inverted_airway, resolution);
 show(occGrid)
 
+rng shuffle
+
 % Set start and goal poses
-start = [745/resolution,762/resolution,-pi];
+start = [randi([680,800])/resolution,750/resolution,-pi];
 goal = [415/resolution, 660/resolution,pi];
 
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
