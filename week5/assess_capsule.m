@@ -1,6 +1,6 @@
 clear; close all; clc;
 
-total_trials = 10;
+total_trials = 24;
 solutions = 0;
 
 % fullfig
@@ -15,4 +15,4 @@ for i = 1:total_trials
 end
 set(gcf, 'Position', get(0, 'Screensize'));
 
-fprintf("Success rate: %f\n", solutions/total_trials);
+fprintf("Success rate: %f%s\n", 100*(solutions/total_trials), "%");
