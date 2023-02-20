@@ -13,7 +13,7 @@ show(occGrid)
 rng shuffle
 
 % Set start and goal poses
-start = [randi([680,800])/resolution, 750/resolution, (randi(200)/100)*pi]
+start = [randi([685,800])1/resolution, 750/resolution, (randi(200)/100)*pi]
 
 leftorRight = randi(2);
 goal = zeros(1,3);
