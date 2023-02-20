@@ -13,8 +13,15 @@ show(occGrid)
 rng shuffle
 
 % Set start and goal poses
-start = [randi([680,800])/resolution,750/resolution,(randi(200)/100)*pi];
-goal = [415/resolution, 660/resolution,pi];
+start = [randi([680,800])/resolution, 750/resolution, (randi(200)/100)*pi]
+
+leftorRight = randi(2);
+goal = zeros(1,3);
+if leftorRight == 1
+    goal = [randi([410,445])/resolution, 660/resolution, (randi(200)/100)*pi]
+else
+    goal = [randi([540,560])/resolution, 660/resolution, (randi(200)/100)*pi]
+end
 
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
