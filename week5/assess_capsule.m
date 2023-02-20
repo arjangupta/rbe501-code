@@ -7,7 +7,7 @@ solutions = 0;
 for i = 1:total_trials
     subplot(4,6,i);
     fprintf("Running trial #%d... ", i);
-    solutionFound = capsule;
+    solutionFound = capsule(i);
     if solutionFound
         solutions = solutions + 1;
     end

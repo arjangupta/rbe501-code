@@ -1,4 +1,4 @@
-function solutionFound = capsule()
+function solutionFound = capsule(trial_num)
 solutionFound = true;
 % Load in the airway image, transform to grayscale and invert it
 [airway,color_map, transp] = imread("939-Oblique.png");
@@ -55,5 +55,8 @@ end
 % Show start and goal in grid map.
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
+
+% Edit text
+title(sprintf("Trial %d", trial_num))
 hold off
 end
