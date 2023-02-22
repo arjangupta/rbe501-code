@@ -198,7 +198,9 @@ success rate. An example of a perfect success rate is shown in Fig~\ref{trial-ba
 These batches of 24 trials were then run 5 times in order to average the success rate. In
 our final results, we obtained 2 results of $95.83\%$ success rate, and 3 perfect success
 rate batches. We have formulated Table~\ref{rrt-batch-table} in order to summarize the results.
-From this table, we can average our overall success rate as $98.33\%$.
+From this table, we can average our overall success rate as $98.33\%$. Although run time
+for each trial was not explicitly measured (since it can vary based on computational power),
+a regularly fast laptop can run all 24 trials in roughly 30 seconds.
 
 \begin{table}[h!]
     \begin{center}
@@ -221,9 +223,28 @@ From this table, we can average our overall success rate as $98.33\%$.
 \end{table}
 
 \section{Discussion}
-In the opinion of the author, this homework problem set was insightful. The given methods
-can be applied to analyze the reward system for reinforcement learning agents in autonomous
-capsule robot navigation.
+The given methods of probabilistically analyzing the success rate of a capsule robot reaching
+its goal location in a bronchial region can be applied to improve the reward system for 
+reinforcement learning (RL) agents in autonomous capsule robot navigation, specifically for
+bronchoscopy. Autonomous endoscopic robotic systems
+often use RL agents\cite{Turan2019} in order to navigate in a `maze' situation like the one we have
+for transbronchial navigation. The agent takes an action which is applied to the environment,
+and an observing interpreter replies with a state and a reward for the agent. Such a closed-loop scenario 
+propagates until the goal is reached. A pictorial representation of this closed loop is shown
+in Fig~\ref{rl-loop-fig}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.23]{rl-loop.png}
+    \caption{A typical reinforcement learning scenario}
+    \label{rl-loop-fig}
+\end{figure}
+
+The reward system for the agent needs to be properly trained in order to guide the agent
+toward the goal. For proper training, tens of thousands of example paths need to be
+provided to the reward system. This training data can be generated using the method
+described in this manuscript. Once adequately adept autonomous bronchoscopes can be
+developed, it can lead to a path for improving biopsy diagnostic yields in bronchoscopies. 
 
 \section{Appendix}
 

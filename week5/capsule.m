@@ -1,5 +1,8 @@
 function solutionFound = capsule(trial_num)
+
+% Default the flag to true
 solutionFound = true;
+
 % Load in the airway image, transform to grayscale and invert it
 [airway,color_map, transp] = imread("939-Oblique.png");
 gray_airway = rgb2gray(airway);
