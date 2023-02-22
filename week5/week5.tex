@@ -161,102 +161,52 @@ In our MATLAB code, we specify that we want to use the \textit{stateSpaceReedsSh
 the bounds given by the \textit{binaryOccupancyMap}. We specify a minimum turning radius
 of $20 \times 10^{-4}$.
 
+\subsection{Validation and path planning}
+
+We additionally set up a \textit{validatorOccupancyMap} with a validation distance
+of $5 \times 10^{-4}$. Finally, we are ready to call our rapidly-exploring random trees
+planner, \textit{plannerRRT}. For the RRT algorithm, we set our maximum branch connection
+distance to be 10 times our validation distance. We also set our maximum iterations at
+$9 \times 10^3$.
+
+After this, we plot the various branches of the RRT algorithm, as well as the path, if it is
+found. We also show our starting and goal positions in the plot.
+
 \section{Results}
 
-\subsection{Result for Problem 3--2}
+An example plot of our RRT algorithm is shown in Fig~\ref{trial24-fig}.
 
-For Problem 3--2, we obtained our final result by multiplying all three $H$ matrices
-that we obtained in the Materials and Methods section. Hence, we obtained the following
-matrix,
-\[
-    H^0_3 =
-    \begin{bmatrix}
-        \sigma_1  & 0 & \sigma_5  & \lambda_1\\
-        0 & 1 & 0 & 0\\
-        \sigma_4  & 0 & \sigma_1  & \lambda_2\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
-\]
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.85]{trial24.png}
+    \caption{An example trial of the RRT algorithm}
+    \label{trial24-fig}
+\end{figure}
 
-where,
-\begin{multline*}
-    \lambda_1 = L_1 \,\cos \left(\theta_1 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sigma_2 \\-L_3 \,\sin \left(\theta_3 \right)\,\sigma_3 +L_2 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)\\-L_2 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)
-\end{multline*}
-\begin{multline*}
-    \lambda_2 = -L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 -L_3 \,\sin \left(\theta_3 \right)\,\sigma_2\\ -L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
-\end{multline*}
-and,
-\begin{align*}
-    \sigma_1 &=\cos \left(\theta_3 \right)\,\sigma_2 -\sin \left(\theta_3 \right)\,\sigma_3 \\
-    \sigma_2 &=\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
-    \sigma_3 &=\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)+\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)\\
-    \sigma_4 &= -\cos \left(\theta_3 \right)\,\sigma_3 -\sin \left(\theta_3 \right)\,\sigma_2\\
-    \sigma_5 &= \cos \left(\theta_3 \right)\,\sigma_3 +\sin \left(\theta_3 \right)\,\sigma_2
-\end{align*}
+The RRT algorithm we have written was run in batches of 24 trials, and plotted as subplots.
+An example of this is shown in 
+These batches of 24 trials were then run 5 times in order to average the success rate. 
 
-The significance of this $H^0_3$ matrix is that is provides
-a direct transformation matrix between the base frame (frame 0) and end-effector frame,
-which is a solution for forward kinematics.
-
-\subsection{Result for Problem 3--5}
-
-For Problem 3--5, we obtained our final result by multiplying all three $A_i$ matrices
-that we obtained in the Materials and Methods section. Hence, we obtained the following
-matrix,
-
-\[
-    T^0_3 =
-    \begin{bmatrix}
-        \sigma_1  & \sigma_4 & 0 & \lambda_1\\
-        \sigma_5 & \sigma_1  & 0 & \lambda_2\\
-        0 & 0 & 1 & 0\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}\\
-\]
-where,
-\begin{align*}
-    \lambda_1 &= L_3 \,\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sigma_2\\
-    \lambda_2 &= \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sigma_2 +L_3 \,\sigma_3 \,\sin \left(\theta_1 \right)
-\end{align*}
-and,
-\begin{align*}
-    \sigma_1 &=\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,\sigma_2 \\
-    \sigma_2 &=\sin \left(\theta_3 +\frac{\pi }{2}\right)\\
-    \sigma_3 &=\cos \left(\theta_3 +\frac{\pi }{2}\right)\\
-    \sigma_4 &= -\cos \left(\theta_1 \right)\,\sigma_2 -\sigma_3 \,\sin \left(\theta_1 \right)\\
-    \sigma_5 &= \cos \left(\theta_1 \right)\,\sigma_2 +\sigma_3 \,\sin \left(\theta_1 \right)
-\end{align*}
-
-The significance of this $T^0_3$ matrix is that is provides
-a direct transformation matrix between the base frame (frame 0) and end-effector frame, 
-which is a solution for forward kinematics.
 
 \section{Discussion}
-In the opinion of the author, this homework problem set was insightful. The
-first problem proved that we do not need to always use the DH convention
-when solving for forward kinematics in robotic manipulators. In fact, when
-using tools like MATLAB, manually executing a non-DH method of
-computing the forward kinematics is no more complex than using the DH method
-itself.\\
-The second problem reinforced our learnings from RBE 500. We used the DH
-convention heavily in that class, so it was great to revisit that foundation
-as we move forward in this class.\\
-A topic for further consideration could be, when would one prefer to use
-a non-DH method over the DH method? The DH convention can provide a minimal
-and efficient way to represent and compute the relationship between the base
-frame and the end effector in many cases, because it reduces the number of
-variables involved from 6 to 4. However, suppose we want to model the
-differential kinematics of a manipulator. The screw-based theory~\cite{Rocha2011}
-can provide advantages in such a case. In the referenced paper for screw-based
-theory, it was found that, when
-various kinematic modelings for common manipulator configurations where
-compared, the screw-based theory did not provide any disadvantages in any
-case. The one noticeable difference was that it provided superior flexibility
-when differential kinematics was compared.
-The parameter identification is also a bit simpler in the screw-based theory, as
-compared to the DH-convention.\\
-It was a great exercise the solve this week's problem set, and the author thanks
-the Professor for this.
+In the opinion of the author, this homework problem set was insightful. The given methods
+can be applied to analyze the reward system for reinforcement learning agents in autonomous
+capsule robot navigation.
+
+\section{Appendix}
+
+\subsection{Success rate assessment script}
+
+\lstinputlisting{assess_capsule.m}
+
+\subsection{Path planning for capsule robot}
+
+\lstinputlisting{capsule.m}
+
+\subsection{Callback function for goal proximity check}
+
+\lstinputlisting{checkIfReachedGoal.m}
+
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 

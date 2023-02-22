@@ -34,7 +34,9 @@ capsuleStateValidator = validatorOccupancyMap(capsuleStateSpace);
 capsuleStateValidator.Map = occGrid;
 capsuleStateValidator.ValidationDistance = 5/resolution;
 
-planner = plannerRRT(capsuleStateSpace,capsuleStateValidator);
+planner = plannerRRT( ...
+    capsuleStateSpace, ...
+    capsuleStateValidator);
 planner.MaxConnectionDistance = 50/resolution;
 planner.MaxIterations = 9000;
 
@@ -48,12 +50,17 @@ show(occGrid)
 hold on
 
 % Plot entire search tree
-plot(solnInfo.TreeData(:,1),solnInfo.TreeData(:,2),'.-');
+plot( ...
+    solnInfo.TreeData(:,1), ...
+    solnInfo.TreeData(:,2),'.-');
 
 if pthObj.NumStates > 0
     % Interpolate and plot path
     interpolate(pthObj,300)
-    plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
+    plot( ...
+        pthObj.States(:,1), ...
+        pthObj.States(:,2), ...
+        'r-','LineWidth',2)
     fprintf("Path found.")
 else
     fprintf("No path solution found.")
