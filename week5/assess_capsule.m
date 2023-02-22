@@ -3,7 +3,6 @@ clear; close all; clc;
 total_trials = 24;
 solutions = 0;
 
-% fullfig
 for i = 1:total_trials
     subplot(4,6,i);
     fprintf("Running trial #%d... ", i);
