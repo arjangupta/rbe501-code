@@ -25,15 +25,16 @@ end
 
 bounds = [occGrid.XWorldLimits; occGrid.YWorldLimits; [-pi pi]];
 
-ss = stateSpaceReedsShepp(bounds);
-ss.MinTurningRadius = 20/resolution;
+% Use Reeds Shepp curves for defining state space
+capsuleStateSpace = stateSpaceReedsShepp(bounds);
+capsuleStateSpace.MinTurningRadius = 20/resolution;
 
 % Plan the path
-stateValidator = validatorOccupancyMap(ss); 
-stateValidator.Map = occGrid;
-stateValidator.ValidationDistance = 5/resolution;
+capsuleStateValidator = validatorOccupancyMap(capsuleStateSpace); 
+capsuleStateValidator.Map = occGrid;
+capsuleStateValidator.ValidationDistance = 5/resolution;
 
-planner = plannerRRT(ss,stateValidator);
+planner = plannerRRT(capsuleStateSpace,capsuleStateValidator);
 planner.MaxConnectionDistance = 50/resolution;
 planner.MaxIterations = 9000;
 
@@ -46,11 +47,11 @@ rng shuffle
 show(occGrid)
 hold on
 
-% Plot entire search tree.
+% Plot entire search tree
 plot(solnInfo.TreeData(:,1),solnInfo.TreeData(:,2),'.-');
 
 if pthObj.NumStates > 0
-    % Interpolate and plot path.
+    % Interpolate and plot path
     interpolate(pthObj,300)
     plot(pthObj.States(:,1),pthObj.States(:,2),'r-','LineWidth',2)
     fprintf("Path found.")
@@ -59,11 +60,11 @@ else
     solutionFound = false;
 end
 
-% Show start and goal in grid map.
+% Show start and goal in grid map
 plot(start(1),start(2),'ro')
 plot(goal(1),goal(2),'mo')
 
-% Edit text
+% Edit title text
 title(sprintf("Trial %d", trial_num))
 hold off
 end

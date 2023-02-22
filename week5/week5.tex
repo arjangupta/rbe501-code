@@ -130,6 +130,37 @@ the x-position between $415 \times 10^{-4}$ and $445 \times 10^{-4}$.
 If the right narrow airway was selected, we randomly generated the x-position
 between $540 \times 10^{-4}$ and $560 \times 10^{-4}$.
 
+\subsection{Dubins and Reeds-Shepp Curves}
+
+Next, we model our state space for the path planning algorithm based
+on Reeds-Shepp Curves. To understand it, we first describe the Dubins
+path. A Dubins path analyzes a simple car model, and generates
+the shortest path between two 2D poses $(x, y, \theta)$. The paths
+can have three segments, right turn (R), left turn (L), straight line (S).
+Based on optimization techniques, the possible path can have the the following combinations,
+\[
+    \{L_\alpha R_\beta L_\gamma, R_\alpha L_\beta R_\gamma, L_\alpha S_d L_\gamma, L\alpha S_d R_\gamma, R_\alpha S_d L_\gamma, R_\alpha S_d R_\gamma \}
+\]
+
+where $\alpha, \gamma \in [0, 2\pi), \beta \in (\pi, 2\pi)$, and $d \geq 0$. An example of
+$R_\alpha S_d L_\gamma$ is shown in Fig~\ref{dubins-eg}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{dubins-img.png}
+    \caption{An example of $R_\alpha S_d L_\gamma$ Dubin's curve}
+    \label{dubins-eg}
+\end{figure}
+
+The Reeds-Shepp curve is the same as Dubins curve, except that reverse direction
+movement is now allowed. Therefore, the sequences of motion primitives can be arrived
+at by using the Dubins combinations, and applying permutations using $R^+, R^-, L^+, L^-$,
+where the positive and negative signs denote forward and reverse motion.
+
+In our MATLAB code, we specify that we want to use the \textit{stateSpaceReedsShepp} object with
+the bounds given by the \textit{binaryOccupancyMap}. We specify a minimum turning radius
+of $20 \times 10^{-4}$.
+
 \section{Results}
 
 \subsection{Result for Problem 3--2}
