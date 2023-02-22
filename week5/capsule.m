@@ -15,6 +15,7 @@ rng shuffle
 % Set start and goal poses
 start = [randi([685,800])/resolution, 750/resolution, (randi(200)/100)*pi];
 
+% Select left or right narrow airway for the goal
 leftorRight = randi(2);
 goal = zeros(1,3);
 if leftorRight == 1

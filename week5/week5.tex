@@ -184,9 +184,41 @@ An example plot of our RRT algorithm is shown in Fig~\ref{trial24-fig}.
 \end{figure}
 
 The RRT algorithm we have written was run in batches of 24 trials, and plotted as subplots.
-An example of this is shown in 
-These batches of 24 trials were then run 5 times in order to average the success rate. 
+For each path successfully found path, we incremented the total successes by 1. After all
+24 trials were run, we divided the number of successes by 24 in order to calculate the
+success rate. An example of a perfect success rate is shown in Fig~\ref{trial-batch-img}.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.21]{random-trials.png}
+    \caption{An example of a batch of trials with 100\% overall success rate}
+    \label{trial-batch-img}.
+\end{figure}
+
+These batches of 24 trials were then run 5 times in order to average the success rate. In
+our final results, we obtained 2 results of $95.83\%$ success rate, and 3 perfect success
+rate batches. We have formulated Table~\ref{rrt-batch-table} in order to summarize the results.
+From this table, we can average our overall success rate as $98.33\%$.
+
+\begin{table}[h!]
+    \begin{center}
+        % \resizebox{0.8\columnwidth}{!}{%
+        \begin{tabular}{||c|c|c|c|c||}
+        \hline
+        Trial Batch & Success Rate \\
+        \hline\hline
+        1 & $100.00\%$ \\
+        2 & $95.83\%$  \\
+        3 & $100.00\%$ \\
+        4 & $95.83\%$ \\
+        5 & $100.00\%$ \\
+        \hline
+        \end{tabular}
+        % }
+    \end{center}
+    \caption{Batch results for RRT algorithm}
+    \label{rrt-batch-table}
+\end{table}
 
 \section{Discussion}
 In the opinion of the author, this homework problem set was insightful. The given methods
