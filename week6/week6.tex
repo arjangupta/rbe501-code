@@ -26,8 +26,7 @@ agupta11@wpi.edu}
 \maketitle
 
 \begin{abstract}
-This document provides an in-depth solution for the Week 6 Physics problems, using
-the Euler-Lagrangian equations.
+This document provides an in-depth solution for the Week 6 Physics by Euler-Lagrange problems in RBE 501.\\
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -35,9 +34,34 @@ physics, euler-lagrange equations
 \end{IEEEkeywords}
 
 \section{Introduction}
-We are asked to solve Problems 3--2 and 3--5 of the main textbook~\cite{Spong2006}.
-For Problem 3--2, the objective is to calculate the forward kinematic equations
-of the robot shown in Figure 1 below, \textit{without} using the DH-convention.\\
+For Week 6, we are given two problems. The first problem shows us a mass $m$ that is free to
+move on the surface of a frictionless table. Mass $m$ is attached to another mass $M$ via a
+string that goes through a hole in the table. We can assume the string has no spring-like
+properties, and is therefore always taut. The representation of this system is shown in 
+Figure \ref{problem-1-given-fig}. Our first objective in this problem is to solve for the Euler-Lagrange
+equations of this system with respect to $r$ and $\theta$. Our second and third objectives here
+are to discuss the behaviors of $r$ and $\theta$ in the EL equations. The fourth objective of the
+first problem is to give the conditions under which $\dot{r}$ and $\ddot{r}$ cause a circular motion
+for mass $m$.\\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.35]{problem-1-given-fig.png}
+    \caption{Given figure for Problem 1}
+    \label{problem-1-given-fig}
+\end{figure}
+
+The second problem shows a mass $m$ that is held at rest on ramp of mass $M$. The ramp has inclination
+$\theta$, as shown in Figure \ref{problem-2-given-fig}. The surface of the ramp is frictionless, and the
+surface upon which the ramp rests is also frictionless. Our objective is to find the acceleration of
+the ramp caused by the release of mass $m$, and we must use Euler-Lagrange approach for this.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{problem-2-given-fig.png}
+    \caption{Given figure for Problem 2}
+    \label{problem-2-given-fig}
+\end{figure}
 
 \section{Materials and Methods}
 
