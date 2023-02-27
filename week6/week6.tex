@@ -82,7 +82,7 @@ and
 to discuss the behaviors of $r$ and $\theta$.\\
 
 \subsubsection{Find overall kinetic energy of the system ($T$)}
-In Fig. 1, we consider vector $\textbf{r}$. Say the x-y plane is the surface
+In Fig. 1, we consider vector $\textbf{r}$. Say the \textit{x-y} plane is the surface
 of the table. Since we consider an angle $\theta$ as shown, we can say,
 
 \[
@@ -104,7 +104,31 @@ with respect to $\theta$ to get velocity,
     \end{pmatrix}
 \]
 
-\subsubsection{Assign frames}
+To find the kinetic energy, we need the square of this velocity,
+which is simply the dot product of the vector with itself.
+
+\[
+    \dot{\textbf{r}}^2 = \dot{\textbf{r}} \cdot \dot{\textbf{r}}
+    = 
+\]
+
+Therefore the kinetic energy of the mass $m$ moving on the table is given as,
+$T_m = \frac{1}{2}~m~\dot{r}^2$. Also, the length of the string that suspends 
+mass $M$ is $l-r$, where
+total length of the string is $l$. Therefore, the kinetic energy of the
+mass $M$ moving perpendicular to the table is given as
+
+\[
+T_M = \frac{1}{2}~M~\left(\frac{d}{dt}(l-r)\right)^2 = \frac{1}{2}~M~\dot{r}^2
+\]
+
+So, the total kinetic energy of the system ($T$) is
+
+\begin{equation}
+    T = \frac{1}{2}~m~\dot{r}^2 + \frac{1}{2}~M~\dot{r}^2 = \frac{1}{2}~\dot{r}^2\left(m + M\right)
+\end{equation}
+
+\subsubsection{Find overall potential energy of system}
 The first step toward solving our problem is to redraw our robot in symbolic
 form, and assign frames for links 0 through 3. This is shown in
 Figure 3. Frame 0 ($x_0 y_0 z_0$) is assigned at the first joint, frame 1
