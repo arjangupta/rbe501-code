@@ -471,14 +471,39 @@ the passage of time. We can see this better by integrating both sides,
 \end{align*}
 
 Which shows that for a given radius $r$ and angular velocity $\dot{\theta}$, the angular momentum
-is some constant value, and hence tweaking $r$ will cause a compensation in $\dot{\theta}$, and vice-versa.
+is conserved as some constant value $C_m$, and hence tweaking $r$ will cause a compensation in $\dot{\theta}$, and vice-versa.
 One fascinating real-life application of the conservation of angular momentum is the spinning of a gyroscope.
-Gyroscopes react to external forces by adjusting themselves in a direction that is given by the cross product
+Spinning gyroscopes react to external forces by adjusting themselves in a direction that is given by the cross product
 of the force applied and their angular momentum. This often gives the appearance that gyroscopes `resist' forces,
 which is in some way true, since it can be seen as the angular momentum `fighting' to conserve itself. In modern
-day sensors, gyroscopic sensors are used to help tell the orientation in something. Specifically, 
+day sensors, gyroscopic sensors are used to tell the orientation in something. Specifically, 
 in robotics, these sensors can help a robot know its orientation, which is essential for a real-time
-controller to correct its error in path planning and kinematics.
+controller to correct its error in path planning and kinematics.\\
+
+Let us also discuss the E-L equations with respect to $r$. These are given by Equations~\ref{prob1_el_sol1}
+and~\ref{prob1_el_sol2} as
+\[
+    m~r~\dot{\theta}^2 - Mg = \ddot{r}(m + M)
+\]
+In this equation, the constants are $m$, $M$, and $g$. The only variables are $r$, $\dot{\theta}$, and
+$\ddot{r}$. The variable $r$ is the length of the portion of string on the table. The angular speed is
+$\dot{\theta}$, which is causing rotations in mass $m$, and the acceleration at which the string is slipping off
+the table is $\ddot{r}$. So, analyzing the causes of the changes in these variables, we can state -\\
+\textit{If the linear acceleration of the string ($\ddot{r}$) changes, then naturally r will change proportionately.
+However, since the equality in this equation must remain true, the mass $m$
+will start spinning faster or slower (change in magnitude of $\dot{\theta}$), according
+to the magnitude of the linear acceleration.}\\
+
+This statement demonstrates that, fascinatingly, if the mass $m$ spins fast enough, it can completely
+lift mass $M$. Mass $M$ can be much greater than $m$ as well, and this will still work. In fact,
+humans have been using this simple concept in windmill turbines for over a thousand years. Imagine
+a simple windmill with a pipe attached to the back of it. The pipe goes deep into the ground, and
+reaches into potable water. Inside the pipe is a weight, which when pulled up by the rotating blades,
+sucks water up into the pipe. At a certain height the water can now be siphoned into a storage
+tank. This way, effortlessly, without electricity, humans used to pump water for storage and usage.
+They could even irrigate their crops using this type of a pumping system.\\
+
+The author thanks the Professor for an engaging and nourishing assignment.
 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
