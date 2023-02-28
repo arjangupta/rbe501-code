@@ -276,21 +276,21 @@ Isolating $\omega_{circ}$,
 \end{equation}
 
 \subsection{Approach for Problem 2}
-
-\subsubsection{Restate objective in technical terms}
 Like Problem 1, we first find $T$ and $U$ in order to give us
 $L \equiv T - U$. After that we solve for the following
 equations of motion,
 
 \begin{equation} \label{prob2_eq_motion_x1}
-    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_1}}\right) = \frac{\partial L}{ \partial x_1}
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_3}}\right) = \frac{\partial L}{ \partial x_3}
 \end{equation}
 and
 \begin{equation} \label{prob2_eq_motion_x2}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_2}}\right) = \frac{\partial L}{ \partial x_2}
 \end{equation}
 
-Where $x_1$ and $x_2$ are the displacements as shown in Figure~\ref{problem-2-given-fig}.
+Where $x_2$ is the displacement as shown in Figure~\ref{problem-2-given-fig}. Here, $x_3$ is the
+displacement down the ramp, in the reference frame of the ramp. The $x_1$ displacement, as shown
+in the figure, is simply the horizontal component of $x_3$. 
 
 \subsubsection{Find overall kinematic energy of system}
 
@@ -336,7 +336,29 @@ For mass $m$, only the vertical component of the velocity vector down the ramp (
 ramp) affects the gravitational potential of the object. The mass $M$ does not have any height change in
 our system, so we define its height as 0. The overall potential energy is therefore $U = U_m$.
 
-\subsubsection{}
+\subsubsection{Find Lagrangian}
+
+The Lagrangian, $L \equiv T  - U$ for this system is
+
+\begin{equation}
+    L = \frac{1}{2} m \left( \dot{x_2}^2 + \dot{x_3}^2 + 2\dot{x_2}\dot{x_3}\cos\theta\right) + \frac{1}{2} M \dot{x_2}^2 + mg~x_3\sin\theta
+\end{equation}
+
+\subsubsection{Find equations of motion for the system}
+
+Using~\ref{prob2_eq_motion_x2}, we have,
+
+\begin{align*}
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_2}}\right) &= \frac{\partial L}{ \partial x_2}\\
+    \frac{d}{dt} \left[ \frac{1}{2} m \left( 2\dot{x_2} + 2\dot{x_3}\cos\theta \right) 
+     + M \dot{x_2} \right] &= 0\\
+    \frac{d}{dt} \left[ m \left( \dot{x_2} + \dot{x_3}\cos\theta \right) 
+     + M \dot{x_2} \right] &= 0
+\end{align*}
+Which gives us,
+\begin{equation}\label{prob2_obj}
+    m (\ddot{x_2} + \ddot{x_3}\cos\theta) + M \ddot{x_2} = 0
+\end{equation}
 
 \section{Results}
 
@@ -379,7 +401,13 @@ regards to the vector $\textbf{r}$ are 0.
 
 \subsection{Result for Problem 3--5}
 
-For Problem 2, we obtained the following results.
+For Problem 2, we obtained the following results, as given in~\ref{prob2_obj},
+
+\[
+    \boxed{
+        
+    }
+\]
 
 \section{Discussion}
 
