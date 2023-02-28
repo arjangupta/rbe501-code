@@ -247,7 +247,7 @@ Which gives the well-known physical fact that angular momentum remains preserved
 \end{equation}
 This is because the standard formula of the angular momentum, $mvr$, can
 easily be rewritten as $mr^2\omega$ because velocity is $r\omega$. We have
-chosen $C_{am}$ to denote constant angular momentum of the system.
+chosen $C_{am}$ to denote the constant angular momentum of the system.
 Futhermore, we can write $\omega_{circ}$ as,
 \begin{equation}\label{omega_circ_val}
     \omega_{circ} = \frac{C_{am}}{m~{r_{circ}}^2}
@@ -258,9 +258,23 @@ We can now substitute~\ref{omega_circ_val} into~\ref{r_circ_val},
 \begin{align*}
     r_{circ} &= \frac{Mgl(m~{r_{circ}}^2)^2}{m~{C_{am}}^2}\\
     r_{circ} &= \frac{Mgl~m^2~r_{circ}^4}{m~{C_{am}}^2}\\
-    1 &= \frac{Mgl~r_{circ}^3}{{C_{am}}^2}\\
-    r_{circ} &= \sqrt[3]{\frac{{C_{am}}^2}{Mgl}}
+    1 &= \frac{Mgl~r_{circ}^3}{{C_{am}}^2}
 \end{align*}
+Isolating $r_{circ}$,
+\begin{equation}\label{prob1_obj4_r}
+    r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMgl}}
+\end{equation}
+
+Additionally we can substitute~\ref{r_circ_val} into~\ref{omega_circ_val}.
+\begin{align*}
+    \omega_{circ} &= \frac{C_{am}(m{\omega_{circ}}^2)^2}{m~{(Mgl)}^2}\\
+    \omega_{circ} &= \frac{C_{am}m^2{\omega_{circ}}^4}{m~M^2g^2l^2}\\
+    1 &= \frac{C_{am}~m~{\omega_{circ}}^3}{M^2g^2l^2}\\
+\end{align*}
+Isolating $\omega_{circ}$,
+\begin{equation}\label{prob4_obj4_omega}
+    \omega_{circ} = \sqrt[3]{\frac{M^2g^2l^2}{m~C_{am}}}
+\end{equation}
 
 \subsection{Approach for Problem 2}
 
@@ -305,38 +319,29 @@ and,
 \end{equation}
 
 Our second and third objectives were to discuss Equations~\ref{prob1_result_el1},~\ref{prob1_result_el2},
-which we will do in our next section. The result of the fourth objective is shown as follows.
+which we will do in our next section. The results of the fourth objective, by using~\ref{prob1_obj4_r}
+and~\ref{prob4_obj4_omega}, are as follows,
+
+\begin{equation}
+    \boxed{r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMgl}}}
+\end{equation}
+
+and,
+
+\begin{equation}
+    \boxed{\omega_{circ} = \sqrt[3]{\frac{M^2g^2l^2}{m~C_{am}}}}
+\end{equation}
+
+Where $C_{am}$ is the constant angular momentum conserved for $r_{circ}$ and $\omega_{circ}$,
+which are the radius and angular velocity values when the linear velocity and linear acceleration with
+regards to the vector $\textbf{r}$ are 0.
 
 \subsection{Result for Problem 3--5}
 
-For Problem 3--5, we obtained our final result by multiplying all three $A_i$ matrices
-that we obtained in the Materials and Methods section. Hence, we obtained the following
-matrix.
+For Problem 2, we obtained the following results.
 
 \section{Discussion}
-In the opinion of the author, this homework problem set was insightful. The
-first problem proved that we do not need to always use the DH convention
-when solving for forward kinematics in robotic manipulators. In fact, when
-using tools like MATLAB, manually executing a non-DH method of
-computing the forward kinematics is no more complex than using the DH method
-itself.\\
-The second problem reinforced our learnings from RBE 500. We used the DH
-convention heavily in that class, so it was great to revisit that foundation
-as we move forward in this class.\\
-A topic for further consideration could be, when would one prefer to use
-a non-DH method over the DH method? The DH convention can provide a minimal
-and efficient way to represent and compute the relationship between the base
-frame and the end effector in many cases, because it reduces the number of
-variables involved from 6 to 4. However, suppose we want to model the
-differential kinematics of a manipulator. The screw-based theory~\cite{Rocha2011}
-can provide advantages in such a case. In the referenced paper for screw-based
-theory, it was found that, when
-various kinematic modelings for common manipulator configurations where
-compared, the screw-based theory did not provide any disadvantages in any
-case. The one noticeable difference was that it provided superior flexibility
-when differential kinematics was compared.
-The parameter identification is also a bit simpler in the screw-based theory, as
-compared to the DH-convention.\\
+
 It was a great exercise the solve this week's problem set, and the author thanks
 the Professor for this.
 \bibliography{refs.bib}
