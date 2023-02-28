@@ -220,31 +220,44 @@ to aid our Discussion better.
 
 Problem 1 also asks to set the conditions under which mass $m$
 has circular motion, by setting
-$\dot{r} = 0$ and $\ddot{r} = 0$. Substituting these values in Equations~\ref{prob1_el_sol1}
-and~\ref{prob1_el_sol2}, and setting $r = r_{circ}$, $\dot{\theta} = \omega_{circ}$, we get,
+$\dot{r} = 0$ and $\ddot{r} = 0$. We substitute these values in Equations~\ref{prob1_el_sol1}
+and~\ref{prob1_el_sol2}. Also, we set $r = r_{circ}$ and $\dot{\theta} = \omega_{circ}$.
+This gives us the following,
 
 \begin{align*}
-    m~r_{circ}~\dot{\theta}^2 - Mgl &= (0) (m + M)\\
-    m~r_{circ}~\dot{\theta}^2 - Mgl &= 0\\
-    m~r_{circ}~\dot{\theta}^2 &= Mgl\\
+    m~r_{circ}~\omega_{circ}^2 - Mgl &= (0) (m + M)\\
+    m~r_{circ}~\omega_{circ}^2 - Mgl &= 0\\
+    m~r_{circ}~\omega_{circ}^2 &= Mgl
 \end{align*}
 So, we can write $r_{circ}$ as,
-\begin{equation}\label{prob1_circular_eq1}
-    r_{circ} = \frac{Mgl}{m\dot{\theta}^2}
+\begin{equation}\label{r_circ_val}
+    r_{circ} = \frac{Mgl}{m\omega_{circ}^2}
 \end{equation}
 
 Also, under these conditions, we set Equations~\ref{prob1_el_sol3} and~\ref{prob1_el_sol4}
-with $\dot{\theta} = \omega_{circ}$ as follows,
+with $\dot{\theta} = \omega_{circ}$ and $r = r_{circ}$ as follows,
 
 \begin{align*}
-    \frac{d}{dt}\left( m~r_{circ}^2~\dot{\omega_{circ}} \right) &= 0\\
-    \int \left[ \frac{d}{dt}\left( m~r_{circ}^2~\dot{\omega_{circ}} \right) \right] dt &= \int (0) dt\\
-    m~r_{circ}^2~\dot{\omega_{circ}} &= C_{circ}\\
+    \frac{d}{dt}\left( m~r_{circ}^2~\omega_{circ} \right) &= 0\\
+    \int \left[ \frac{d}{dt}\left( m~r_{circ}^2~\omega_{circ} \right) \right] dt &= \int (0) dt
 \end{align*}
-So, we can write $\omega_{circ}$ as,
+Which gives the well-known physical fact that angular momentum remains preserved in this system,
 \begin{equation}
-    \dot{\omega_{circ}} = \frac{C_{circ}}{m~r_{circ}^2}
+    m~r_{circ}^2~\omega_{circ} = C_{am}
 \end{equation}
+This is because the standard formula of the angular momentum, $mvr$, can
+easily be rewritten as $mr^2\omega$ because velocity is $r\omega$. We have
+chosen an arbitrary constant $C_{am}$ as the angular momentum of the system.
+Futhermore, we can write $\omega_{circ}$ as,
+\begin{equation}\label{omega_circ_val}
+    \omega_{circ} = \frac{C_{am}}{m~r_{circ}^2}
+\end{equation}
+
+We can now substitute~\ref{omega_circ_val} into~\ref{r_circ_val},
+
+\begin{align*}
+    r_{circ} &= \frac{Mgl(m~r_{circ}^2)^2}{m~C_{am}}\\
+\end{align*}
 
 \subsection{Approach for Problem 2}
 
