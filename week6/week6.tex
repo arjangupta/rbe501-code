@@ -369,9 +369,28 @@ Using~\ref{prob2_eq_motion_x1}, we have,
     \frac{d}{dt} \left[m(\dot{x_3} + \dot{x_2}\cos\theta)\right] &= mg\sin\theta\\
     m (\ddot{x_3} + \ddot{x_2}\cos\theta) &= mg\sin\theta\\
     \ddot{x_3} + \ddot{x_2}\cos\theta &= g\sin\theta\\
-    \ddot{x_3} &= g\sin\theta - \ddot{x_2}\cos\theta
+\end{align*}
+Which gives us,
+\begin{equation}\label{prob2_x3_acc_value}
+    \ddot{x_3} = g\sin\theta - \ddot{x_2}\cos\theta
+\end{equation}
+
+Now, putting Equation \ref{prob2_x3_acc_value} into Equation \ref{prob2_obj}, we get,
+
+\begin{align*}
+    \ddot{x_2} &= \frac{- m(g\sin\theta - \ddot{x_2}\cos\theta)\cos\theta}{m + M}\\
+    \ddot{x_2} &= \frac{-mg\sin\theta\cos\theta + m\ddot{x_2}\cos^2\theta}{m+M}\\
+    m \ddot{x_2} + M \ddot{x_2} &= -mg\sin\theta\cos\theta + m\ddot{x_2}\cos^2\theta\\
+    m \ddot{x_2}(1 - \cos^2\theta) + M \ddot{x_2} &= -mg\sin\theta\cos\theta\\
+    m \ddot{x_2}\sin^2\theta + M \ddot{x_2} &= -mg\sin\theta\cos\theta\\
+    \ddot{x_2}(m \sin^2\theta + M) &= -mg\sin\theta\cos\theta
 \end{align*}
 
+Isolating $\ddot{x_2}$, we get
+
+\begin{equation}
+    \ddot{x_2} = \frac{-mg\sin\theta\cos\theta}{(m \sin^2\theta + M)}
+\end{equation}
 \section{Results}
 
 \subsection{Results for Problem 1}
