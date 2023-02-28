@@ -388,9 +388,12 @@ Now, putting Equation \ref{prob2_x3_acc_value} into Equation \ref{prob2_obj}, we
 
 Isolating $\ddot{x_2}$, we get
 
-\begin{equation}
-    \ddot{x_2} = \frac{-mg\sin\theta\cos\theta}{(m \sin^2\theta + M)}
+\begin{equation}\label{prob2_obj_isolated}
+    \ddot{x_2} = \frac{-mg\sin\theta\cos\theta}{M + m \sin^2\theta}
 \end{equation}
+
+\vspace{0.2in}
+
 \section{Results}
 
 \subsection{Results for Problem 1}
@@ -432,18 +435,20 @@ regards to the vector $\textbf{r}$ are 0.
 
 \subsection{Result for Problem 3--5}
 
-For Problem 2, we obtained the following results, as given in~\ref{prob2_obj},
+For Problem 2, we obtained the following result, as given in Equation~\ref{prob2_obj_isolated},
 
-% \[
-%     \boxed{
-        
-%     }
-% \]
+\[
+    \boxed{
+        \ddot{x_2} = \frac{-mg\sin\theta\cos\theta}{M + m \sin^2\theta}     
+    }
+\]
+
+Which shows the acceleration corresponding to the displacement $x_2$ in Figure~\ref{problem-2-given-fig}.
 
 \section{Discussion}
 
-It was a great exercise the solve this week's problem set, and the author thanks
-the Professor for this.
+The author found this assignment fascinating.
+
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
