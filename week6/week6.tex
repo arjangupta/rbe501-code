@@ -189,32 +189,62 @@ The Lagrangian of the system is given as $L \equiv T - U$. Using Equations
 \end{align*}
 
 \subsubsection{Find equations of motion for the system}
-Using Equations \ref{prob1_eq_motion_r} and \ref{prob1_eq_motion_theta}
+We can use Equations \ref{prob1_eq_motion_r} and \ref{prob1_eq_motion_theta}
 to find the equations of motion.\\
 
 For the equations of motion with respect to $r$, we have,
 
-\begin{equation}
+\begin{equation}\label{prob1_el_sol1}
     \frac{\partial L}{\partial r} = m~r~\dot{\theta}^2 - Mgl
 \end{equation}
-\begin{equation}
+\begin{equation}\label{prob1_el_sol2}
     \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{r}}\right) 
     = \frac{d}{dt}\left( \dot{r}(m + M) \right) = \ddot{r}(m + M)
 \end{equation}\\
 
 And for the equations of motion with respect to $\theta$, we have,
 
-\begin{equation}
+\begin{equation}\label{prob1_el_sol3}
     \frac{\partial L}{\partial \theta} = 0
 \end{equation}
-\begin{equation}\label{prob1_dt_theta_el}
+\begin{equation}\label{prob1_el_sol4}
     \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\theta}}\right) 
     = \frac{d}{dt}\left( m~r^2~\dot{\theta} \right)
 \end{equation}
 
 While it is possible to show the expanded differentiated form of 
-Equation~\ref{prob1_dt_theta_el}, we have left it as is in order
+Equation~\ref{prob1_el_sol4}, we have left it as is in order
 to aid our Discussion better.
+
+\subsubsection{Circular motion conditions}
+
+Problem 1 also asks to set the conditions under which mass $m$
+has circular motion, by setting
+$\dot{r} = 0$ and $\ddot{r} = 0$. Substituting these values in Equations~\ref{prob1_el_sol1}
+and~\ref{prob1_el_sol2}, and setting $r = r_{circ}$, $\dot{\theta} = \omega_{circ}$, we get,
+
+\begin{align*}
+    m~r_{circ}~\dot{\theta}^2 - Mgl &= (0) (m + M)\\
+    m~r_{circ}~\dot{\theta}^2 - Mgl &= 0\\
+    m~r_{circ}~\dot{\theta}^2 &= Mgl\\
+\end{align*}
+So, we can write $r_{circ}$ as,
+\begin{equation}\label{prob1_circular_eq1}
+    r_{circ} = \frac{Mgl}{m\dot{\theta}^2}
+\end{equation}
+
+Also, under these conditions, we set Equations~\ref{prob1_el_sol3} and~\ref{prob1_el_sol4}
+with $\dot{\theta} = \omega_{circ}$ as follows,
+
+\begin{align*}
+    \frac{d}{dt}\left( m~r_{circ}^2~\dot{\omega_{circ}} \right) &= 0\\
+    \int \left[ \frac{d}{dt}\left( m~r_{circ}^2~\dot{\omega_{circ}} \right) \right] dt &= \int (0) dt\\
+    m~r_{circ}^2~\dot{\omega_{circ}} &= C_{circ}\\
+\end{align*}
+So, we can write $\omega_{circ}$ as,
+\begin{equation}
+    \dot{\omega_{circ}} = \frac{C_{circ}}{m~r_{circ}^2}
+\end{equation}
 
 \subsection{Approach for Problem 2}
 
@@ -239,73 +269,33 @@ Let us first establish our vectors. As shown in the diagram,
 
 \section{Results}
 
-\subsection{Result for Problem 3--2}
+\subsection{Results for Problem 1}
 
-For Problem 3--2, we obtained our final result by multiplying all three $H$ matrices
-that we obtained in the Materials and Methods section. Hence, we obtained the following
-matrix,
-\[
-    H^0_3 =
-    \begin{bmatrix}
-        \sigma_1  & 0 & \sigma_5  & \lambda_1\\
-        0 & 1 & 0 & 0\\
-        \sigma_4  & 0 & \sigma_1  & \lambda_2\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
-\]
+Our first objective of Problem 1 was to find the equations of motion in terms
+of $r$ and $\theta$. From Equations~\ref{prob1_el_sol1},~\ref{prob1_el_sol2},~\ref{prob1_el_sol3},~\ref{prob1_el_sol4}, these are as follows,\\
 
-where,
-\begin{multline*}
-    \lambda_1 = L_1 \,\cos \left(\theta_1 \right)+L_3 \,\cos \left(\theta_3 \right)\,\sigma_2 \\-L_3 \,\sin \left(\theta_3 \right)\,\sigma_3 +L_2 \,\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)\\-L_2 \,\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)
-\end{multline*}
-\begin{multline*}
-    \lambda_2 = -L_1 \,\sin \left(\theta_1 \right)-L_3 \,\cos \left(\theta_3 \right)\,\sigma_3 -L_3 \,\sin \left(\theta_3 \right)\,\sigma_2\\ -L_2 \,\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)-L_2 \,\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)
-\end{multline*}
+\begin{equation}\label{prob1_result_el1}
+    \boxed{
+        m~r~\dot{\theta}^2 - M~g~l = \ddot{r}~(m + M)
+    }
+\end{equation}
+
 and,
-\begin{align*}
-    \sigma_1 &=\cos \left(\theta_3 \right)\,\sigma_2 -\sin \left(\theta_3 \right)\,\sigma_3 \\
-    \sigma_2 &=\cos \left(\theta_1 \right)\,\cos \left(\theta_2 \right)-\sin \left(\theta_1 \right)\,\sin \left(\theta_2 \right)\\
-    \sigma_3 &=\cos \left(\theta_1 \right)\,\sin \left(\theta_2 \right)+\cos \left(\theta_2 \right)\,\sin \left(\theta_1 \right)\\
-    \sigma_4 &= -\cos \left(\theta_3 \right)\,\sigma_3 -\sin \left(\theta_3 \right)\,\sigma_2\\
-    \sigma_5 &= \cos \left(\theta_3 \right)\,\sigma_3 +\sin \left(\theta_3 \right)\,\sigma_2
-\end{align*}
 
-The significance of this $H^0_3$ matrix is that is provides
-a direct transformation matrix between the base frame (frame 0) and end-effector frame,
-which is a solution for forward kinematics.
+\begin{equation}\label{prob1_result_el2}
+    \boxed{
+        \frac{d}{dt}\left( m~r^2~\dot{\theta} \right) = 0
+    }
+\end{equation}
+
+Our second and third objectives were to discuss Equations~\ref{prob1_result_el1},~\ref{prob1_result_el2},
+which we will do in our next section. The result of the fourth objective is shown as follows.
 
 \subsection{Result for Problem 3--5}
 
 For Problem 3--5, we obtained our final result by multiplying all three $A_i$ matrices
 that we obtained in the Materials and Methods section. Hence, we obtained the following
-matrix,
-
-\[
-    T^0_3 =
-    \begin{bmatrix}
-        \sigma_1  & \sigma_4 & 0 & \lambda_1\\
-        \sigma_5 & \sigma_1  & 0 & \lambda_2\\
-        0 & 0 & 1 & 0\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}\\
-\]
-where,
-\begin{align*}
-    \lambda_1 &= L_3 \,\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}-L_3 \,\sin \left(\theta_1 \right)\,\sigma_2\\
-    \lambda_2 &= \cos \left(\theta_1 \right)\,{\left(L_1 +q_2 \right)}+L_3 \,\cos \left(\theta_1 \right)\,\sigma_2 +L_3 \,\sigma_3 \,\sin \left(\theta_1 \right)
-\end{align*}
-and,
-\begin{align*}
-    \sigma_1 &=\cos \left(\theta_1 \right)\,\sigma_3 -\sin \left(\theta_1 \right)\,\sigma_2 \\
-    \sigma_2 &=\sin \left(\theta_3 +\frac{\pi }{2}\right)\\
-    \sigma_3 &=\cos \left(\theta_3 +\frac{\pi }{2}\right)\\
-    \sigma_4 &= -\cos \left(\theta_1 \right)\,\sigma_2 -\sigma_3 \,\sin \left(\theta_1 \right)\\
-    \sigma_5 &= \cos \left(\theta_1 \right)\,\sigma_2 +\sigma_3 \,\sin \left(\theta_1 \right)
-\end{align*}
-
-The significance of this $T^0_3$ matrix is that is provides
-a direct transformation matrix between the base frame (frame 0) and end-effector frame, 
-which is a solution for forward kinematics.
+matrix.
 
 \section{Discussion}
 In the opinion of the author, this homework problem set was insightful. The
