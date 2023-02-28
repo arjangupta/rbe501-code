@@ -71,11 +71,11 @@ Our first step toward solving Problem I is to find the overall kinetic energy ($
 overall potential energy ($U$) of the system. We then find the Lagrangian of the system
 as $L = T - U$. We can then use the Euler-Lagrangian equation,
 
-\begin{equation}
+\begin{equation} \label{prob1_eq_motion_r}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{r}}\right) = \frac{\partial L}{ \partial r}
 \end{equation}
 and
-\begin{equation}
+\begin{equation} \label{prob1_eq_motion_theta}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}}\right) = \frac{\partial L}{ \partial \theta}
 \end{equation}
 
@@ -107,17 +107,17 @@ with respect to $\theta$ to get velocity,
 To find the kinetic energy, we need the square of this velocity,
 which is simply the dot product of the vector with itself.
 
-\begin{multline*}
+\begin{align*}
     \dot{\textbf{r}}^2 = \dot{\textbf{r}} \cdot \dot{\textbf{r}}
-    = (\dot{r} \cos \theta - r \dot{\theta} \sin \theta)^2 +
+    &= (\dot{r} \cos \theta - r \dot{\theta} \sin \theta)^2 +
     (\dot{r} \sin \theta + r \dot{\theta} \cos \theta)^2\\
-    = \dot{r}^2 \cos^2 \theta + r^2 \dot{\theta}^2 \sin^2 \theta 
+    &= \dot{r}^2 \cos^2 \theta + r^2 \dot{\theta}^2 \sin^2 \theta 
     + 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
     + \dot{r}^2 \sin^2 \theta + r^2 \dot{\theta}^2 \cos \theta
     - 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
-    = \dot{r}^2 (\cos^2\theta + \sin^2\theta) 
+    &= \dot{r}^2 (\cos^2\theta + \sin^2\theta) 
     + r^2\dot{\theta}^2 (\cos^2\theta + \sin^2\theta)\\
-\end{multline*}
+\end{align*}
 Hence,
 \[
     \dot{\textbf{r}}^2 = \dot{r}^2 + r^2\dot{\theta}^2
@@ -125,7 +125,7 @@ Hence,
 
 Therefore the kinetic energy of the mass $m$ moving on the table is given as,
 
-\begin{equation} \label{ke_mass_small_m}
+\begin{equation} \label{prob1_ke_mass_small_m}
     T_m = \frac{1}{2}~m~(\dot{r}^2 + r^2\dot{\theta}^2)
 \end{equation}
 Also, the length of the string that suspends 
@@ -135,11 +135,11 @@ of the string is also along the axes perpendicular to the table,
 which is the \textit{z} axis. Therefore, the kinetic energy of the
 mass $M$ moving perpendicular to the table is given as
 
-\begin{equation} \label{ke_mass_big_m}    
+\begin{equation} \label{prob1_ke_mass_big_m}    
     T_M = \frac{1}{2}~M~\left(\frac{d}{dt}(l-r)\hat{\textbf{z}}\right)^2 = \frac{1}{2}~M~\dot{r}^2
 \end{equation}
 
-So, using Equations~\ref{ke_mass_small_m} and~\ref{ke_mass_big_m},
+So, using Equations~\ref{prob1_ke_mass_small_m} and~\ref{prob1_ke_mass_big_m},
 the total kinetic energy of the system ($T$) is,
 
 \begin{align*}
@@ -147,110 +147,50 @@ the total kinetic energy of the system ($T$) is,
       &=\frac{1}{2}~m~(\dot{r}^2 + r^2\dot{\theta}^2) + \frac{1}{2}~M~\dot{r}^2
 \end{align*}
 Rearranging,
-\begin{equation}
+\begin{equation} \label{prob1_overall_ke}
     T = \frac{1}{2} \dot{r}^2 (m + M) + \frac{1}{2} m r^2 \dot{\theta}^2
 \end{equation}
 
 \subsubsection{Find overall potential energy of system}
-The first step toward solving our problem is to redraw our robot in symbolic
-form, and assign frames for links 0 through 3. This is shown in
-Figure 3. Frame 0 ($x_0 y_0 z_0$) is assigned at the first joint, frame 1
-($x_1 y_1 z_1$) is assigned at the
-second joint, and frame 2 ($x_2 y_2 z_2$)
- is assigned at third joint. All joints in this case are revolute.
- Frame 3 ($x_3 y_3 z_3$) is assigned at
-the end of link 3.\\
+The potential energy is also a sum of the potential energies of the masses
+$m$ and $M$ in the system. The only source of potential energy in
+this system is gravity caused by the earth. Since we are free to define
+the reference point from where we can count the height from earth, let us
+define the table-top in Figure~\ref{problem-1-given-fig} as height $h = 0$.
+Also, $g$ is the constant acceleration due to gravity.
 
-\subsubsection{Variables and constants}
-Now that we have assigned the frames, we can come up with some constants for
-the link lengths. 
-
-Assume that link 1 is of constant length $L_1$, link 2 is 
-of constant length $L_2$, and link 3 is of constant length $L_3$. Additionally,
-we are dealing with 3 revolute joints, so when the first revolute joint moves,
-an angle subtended by $x_1$ from $x_0$ is the variable $\theta_1$. Similarly,
-when the second and third revolute joints move, we get a variable angles of
-$\theta_2$ and $\theta_3$.
-
-\subsubsection{Find H matrices}
-We can now start formulating our homogeneous transformation matrices.
-
-We first form the rotation matrices. The rotation matrices are given by
-the angle of rotation $\theta$ about the Y axis, given as the following.
-\begin{equation*}
-    R_y =
-    \begin{bmatrix}
-         \cos\theta  & 0 & \sin\theta\\
-         0 & 1 & 0\\
-         -\sin\theta & 0 & \cos\theta
-    \end{bmatrix}
-\end{equation*}
-
-In our Live Script, we use the following MATLAB code to formulate $R_y$.
-
-
-All our link lengths take on the following form.
-
-\begin{equation*}
-    d = \begin{bmatrix}
-        L \cos\theta\\0\\-L\sin\theta
-    \end{bmatrix}
-\end{equation*}
-
-This can again be turned into a function, as follows.
-
-
-Furthermore, we use another handy function to compute the homogeneous
-transformation matrices.
-
-
-Using this function in conjunction with the previous ones,
-we found the following H matrices for the frame-to-frame transformations.
+This means,
 
 \[
-    H^0_1 = \begin{bmatrix}
-        R^0_1 & d^0_1\\
-        0 & 1
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        \cos\theta _{1} & 0 & \sin\theta _{1} & L_{1} \cos\theta_1\\
-        0 & 1 & 0 & 0\\
-        -\sin\theta _{1} & 0 & \cos\theta_{1} & -L_1 \sin\theta_1\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
+    U_m = mgh = mg~(0) = 0
 \]
+
+and,
 
 \[
-    H^1_2 = \begin{bmatrix}
-        R^1_2 & d^1_2\\
-        0 & 1
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        \cos\theta _{2} & 0 & \sin\theta _{2} & L_{2} \cos\theta_2\\
-        0 & 1 & 0 & 0\\
-        -\sin\theta _{2} & 0 & \cos\theta_{2} & -L_2 \sin\theta_2\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
+    U_M = Mg(-(l-r)) = -Mg(r-l)
 \]
 
-\[
-    H^2_3 = \begin{bmatrix}
-        R^2_3 & d^2_3\\
-        0 & 1
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        \cos\theta _{3} & 0 & \sin\theta _{3} & L_{3} \cos\theta_3\\
-        0 & 1 & 0 & 0\\
-        -\sin\theta _{3} & 0 & \cos\theta_{3} & -L_3 \sin\theta_3\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
-\]
+So, the overall potential energy of the system is simply,
+\begin{equation} \label{prob1_overall_pe}
+    U = U_M + U_m = -Mg(r-l)
+\end{equation}
 
-Now we are ready to multiply these matrices to obtain the final result
-of our objective.
+\subsubsection{Find Lagrangian of the system}
+The Lagrangian of the system is given as $L = T - U$. Using Equations 
+\ref{prob1_overall_ke} and \ref{prob1_overall_pe}, we get
+
+\begin{align*}
+    L &= \left(\frac{1}{2} \dot{r}^2 (m + M) + 
+        \frac{1}{2} m r^2 \dot{\theta}^2\right) -
+        (-Mg(r-l))\\
+    L &= \frac{1}{2} \dot{r}^2 (m + M) + 
+    \frac{1}{2} m r^2 \dot{\theta}^2 + Mg(r-L)
+\end{align*}
+
+\subsubsection{Find equations of motion for the system}
+Using Equations \ref{prob1_eq_motion_r} and \ref{prob1_eq_motion_theta}
+to find the equations of motion.
 
 \subsection{Approach for Problem 3--5}
 
