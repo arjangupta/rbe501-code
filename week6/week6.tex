@@ -292,23 +292,51 @@ and
 
 Where $x_1$ and $x_2$ are the displacements as shown in Figure~\ref{problem-2-given-fig}.
 
-\subsection{Find overall kinematic energy of system}
+\subsubsection{Find overall kinematic energy of system}
 
 Let us first establish our vectors. With the directions shown in Figure~\ref{problem-2-given-fig},
 the velocity of the moving ramp is given as 
 
 \[
-    v_2 = \dot{x_2} \hat{\textbf{i}}
+    \mathbf{v_2} = \dot{x_2} \hat{\textbf{i}}
 \]
 
 The velocity of the block sliding down the ramp is given as
 
 \[
-    v_1 = \dot{x_2} \hat{\textbf{i}} + \dot{x_3}\hat{\textbf{r}}
+    \mathbf{v_1} = \dot{x_2} \hat{\textbf{i}} + \dot{x_3}\hat{\textbf{r}}
 \]
 
 where $\dot{x_3}\hat{\textbf{r}}$ is the vector showing the velocity down the ramp in the reference frame of the
-ramp, and $\hat{\textbf{r}}$ is the direction down the ramp, in the reference frame of the ramp.
+ramp, and $\hat{\textbf{r}}$ is the direction down the ramp (which is angle $\theta$ down from the horizontal),
+in the reference frame of the ramp.
+
+Thus, the kinetic energies are,
+
+\[
+    T_m = \frac{1}{2} m \mathbf{v_1} \cdot \mathbf{v_1} = \frac{1}{2} m \left( \dot{x_2}^2 + \dot{x_3}^2 + 2\dot{x_2}\dot{x_3}\cos\theta\right)
+\]
+\[
+    T_M = \frac{1}{2} M \mathbf{v_2} \cdot \mathbf{v_2} = \frac{1}{2} M \dot{x_2}^2
+\]
+
+In $T_m$, $\theta$ is the angle of incline of the ramp. The overall kinetic energy is $T = T_m + T_M$.
+
+\subsubsection{Find overall potential energy of the system}
+
+The potential energies are,
+\[
+    U_m = -mg~x_3\sin\theta
+\]
+and,
+\[
+    U_M = Mg~(0) = 0
+\]
+For mass $m$, only the vertical component of the velocity vector down the ramp (in the reference frame of the 
+ramp) affects the gravitational potential of the object. The mass $M$ does not have any height change in
+our system, so we define its height as 0. The overall potential energy is therefore $U = U_m$.
+
+\subsubsection{}
 
 \section{Results}
 
