@@ -107,25 +107,48 @@ with respect to $\theta$ to get velocity,
 To find the kinetic energy, we need the square of this velocity,
 which is simply the dot product of the vector with itself.
 
-\[
+\begin{multline*}
     \dot{\textbf{r}}^2 = \dot{\textbf{r}} \cdot \dot{\textbf{r}}
-    = 
+    = (\dot{r} \cos \theta - r \dot{\theta} \sin \theta)^2 +
+    (\dot{r} \sin \theta + r \dot{\theta} \cos \theta)^2\\
+    = \dot{r}^2 \cos^2 \theta + r^2 \dot{\theta}^2 \sin^2 \theta 
+    + 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
+    + \dot{r}^2 \sin^2 \theta + r^2 \dot{\theta}^2 \cos \theta
+    - 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
+    = \dot{r}^2 (\cos^2\theta + \sin^2\theta) 
+    + r^2\dot{\theta}^2 (\cos^2\theta + \sin^2\theta)\\
+\end{multline*}
+Hence,
+\[
+    \dot{\textbf{r}}^2 = \dot{r}^2 + r^2\dot{\theta}^2
 \]
 
 Therefore the kinetic energy of the mass $m$ moving on the table is given as,
-$T_m = \frac{1}{2}~m~\dot{r}^2$. Also, the length of the string that suspends 
+
+\begin{equation} \label{ke_mass_small_m}
+    T_m = \frac{1}{2}~m~(\dot{r}^2 + r^2\dot{\theta}^2)
+\end{equation}
+Also, the length of the string that suspends 
 mass $M$ is $l-r$, where
-total length of the string is $l$. Therefore, the kinetic energy of the
+total length of the string is $l$. The suspended part
+of the string is also along the axes perpendicular to the table,
+which is the \textit{z} axis. Therefore, the kinetic energy of the
 mass $M$ moving perpendicular to the table is given as
 
-\[
-T_M = \frac{1}{2}~M~\left(\frac{d}{dt}(l-r)\right)^2 = \frac{1}{2}~M~\dot{r}^2
-\]
+\begin{equation} \label{ke_mass_big_m}    
+    T_M = \frac{1}{2}~M~\left(\frac{d}{dt}(l-r)\hat{\textbf{z}}\right)^2 = \frac{1}{2}~M~\dot{r}^2
+\end{equation}
 
-So, the total kinetic energy of the system ($T$) is
+So, using Equations~\ref{ke_mass_small_m} and~\ref{ke_mass_big_m},
+the total kinetic energy of the system ($T$) is,
 
+\begin{align*}
+    T &= T_m + T_M\\
+      &=\frac{1}{2}~m~(\dot{r}^2 + r^2\dot{\theta}^2) + \frac{1}{2}~M~\dot{r}^2
+\end{align*}
+Rearranging,
 \begin{equation}
-    T = \frac{1}{2}~m~\dot{r}^2 + \frac{1}{2}~M~\dot{r}^2 = \frac{1}{2}~\dot{r}^2\left(m + M\right)
+    T = \frac{1}{2} \dot{r}^2 (m + M) + \frac{1}{2} m r^2 \dot{\theta}^2
 \end{equation}
 
 \subsubsection{Find overall potential energy of system}
