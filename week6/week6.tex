@@ -168,12 +168,12 @@ This means,
 and,
 
 \[
-    U_M = Mg(-(l-r)) = -Mg(r-l)
+    U_M = Mg(-(l-r)) = Mg(r-l)
 \]
 
 So, the overall potential energy of the system is simply,
 \begin{equation} \label{prob1_overall_pe}
-    U = U_M + U_m = -Mg(r-l)
+    U = U_M + U_m = Mg(r-l)
 \end{equation}
 
 \subsubsection{Find Lagrangian of the system}
@@ -182,10 +182,9 @@ The Lagrangian of the system is given as $L \equiv T - U$. Using Equations
 
 \begin{align*}
     L &= \left(\frac{1}{2} \dot{r}^2 (m + M) + 
-        \frac{1}{2} m r^2 \dot{\theta}^2\right) -
-        (-Mg(r-l))\\
+        \frac{1}{2} m r^2 \dot{\theta}^2\right)-Mg(r-l)\\
     L &= \frac{1}{2} \dot{r}^2 (m + M) + 
-    \frac{1}{2} m r^2 \dot{\theta}^2 + Mg(r-l)
+    \frac{1}{2} m r^2 \dot{\theta}^2 - Mg(r-l)
 \end{align*}
 
 \subsubsection{Find equations of motion for the system}
@@ -195,7 +194,7 @@ to find the equations of motion.\\
 For the equations of motion with respect to $r$, we have,
 
 \begin{equation}\label{prob1_el_sol1}
-    \frac{\partial L}{\partial r} = m~r~\dot{\theta}^2 - Mgl
+    \frac{\partial L}{\partial r} = m~r~\dot{\theta}^2 - Mg
 \end{equation}
 \begin{equation}\label{prob1_el_sol2}
     \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{r}}\right) 
@@ -225,13 +224,13 @@ and~\ref{prob1_el_sol2}. Also, we set $r = r_{circ}$ and $\dot{\theta} = \omega_
 This gives us the following,
 
 \begin{align*}
-    m~r_{circ}~{\omega_{circ}}^2 - Mgl &= (0) (m + M)\\
-    m~r_{circ}~{\omega_{circ}}^2 - Mgl &= 0\\
-    m~r_{circ}~{\omega_{circ}}^2 &= Mgl
+    m~r_{circ}~{\omega_{circ}}^2 - Mg &= (0) (m + M)\\
+    m~r_{circ}~{\omega_{circ}}^2 - Mg &= 0\\
+    m~r_{circ}~{\omega_{circ}}^2 &= Mg
 \end{align*}
 So, we can write $r_{circ}$ as,
 \begin{equation}\label{r_circ_val}
-    r_{circ} = \frac{Mgl}{m{\omega_{circ}}^2}
+    r_{circ} = \frac{Mg}{m{\omega_{circ}}^2}
 \end{equation}
 
 Also, under these conditions, we set Equations~\ref{prob1_el_sol3} and~\ref{prob1_el_sol4}
@@ -256,24 +255,24 @@ Futhermore, we can write $\omega_{circ}$ as,
 We can now substitute~\ref{omega_circ_val} into~\ref{r_circ_val},
 
 \begin{align*}
-    r_{circ} &= \frac{Mgl(m~{r_{circ}}^2)^2}{m~{C_{am}}^2}\\
-    r_{circ} &= \frac{Mgl~m^2~r_{circ}^4}{m~{C_{am}}^2}\\
-    1 &= \frac{Mgl~r_{circ}^3}{{C_{am}}^2}
+    r_{circ} &= \frac{Mg(m~{r_{circ}}^2)^2}{m~{C_{am}}^2}\\
+    r_{circ} &= \frac{Mg~m^2~r_{circ}^4}{m~{C_{am}}^2}\\
+    1 &= \frac{Mg~r_{circ}^3}{{C_{am}}^2}
 \end{align*}
 Isolating $r_{circ}$,
 \begin{equation}\label{prob1_obj4_r}
-    r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMgl}}
+    r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMg}}
 \end{equation}
 
 Additionally we can substitute~\ref{r_circ_val} into~\ref{omega_circ_val}.
 \begin{align*}
-    \omega_{circ} &= \frac{C_{am}(m{\omega_{circ}}^2)^2}{m~{(Mgl)}^2}\\
-    \omega_{circ} &= \frac{C_{am}m^2{\omega_{circ}}^4}{m~M^2g^2l^2}\\
-    1 &= \frac{C_{am}~m~{\omega_{circ}}^3}{M^2g^2l^2}\\
+    \omega_{circ} &= \frac{C_{am}(m{\omega_{circ}}^2)^2}{m~{(Mg)}^2}\\
+    \omega_{circ} &= \frac{C_{am}m^2{\omega_{circ}}^4}{m~M^2g^2}\\
+    1 &= \frac{C_{am}~m~{\omega_{circ}}^3}{M^2g^2}\\
 \end{align*}
 Isolating $\omega_{circ}$,
 \begin{equation}\label{prob4_obj4_omega}
-    \omega_{circ} = \sqrt[3]{\frac{M^2g^2l^2}{m~C_{am}}}
+    \omega_{circ} = \sqrt[3]{\frac{M^2g^2}{m~C_{am}}}
 \end{equation}
 
 \subsection{Approach for Problem 2}
@@ -323,13 +322,13 @@ which we will do in our next section. The results of the fourth objective, by us
 and~\ref{prob4_obj4_omega}, are as follows,
 
 \begin{equation}
-    \boxed{r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMgl}}}
+    \boxed{r_{circ} = \sqrt[3]{\frac{{C_{am}}^2}{mMg}}}
 \end{equation}
 
 and,
 
 \begin{equation}
-    \boxed{\omega_{circ} = \sqrt[3]{\frac{M^2g^2l^2}{m~C_{am}}}}
+    \boxed{\omega_{circ} = \sqrt[3]{\frac{M^2g^2}{m~C_{am}}}}
 \end{equation}
 
 Where $C_{am}$ is the constant angular momentum conserved for $r_{circ}$ and $\omega_{circ}$,
