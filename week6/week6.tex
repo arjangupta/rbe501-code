@@ -353,12 +353,24 @@ Using~\ref{prob2_eq_motion_x2}, we have,
     \frac{d}{dt} \left[ \frac{1}{2} m \left( 2\dot{x_2} + 2\dot{x_3}\cos\theta \right) 
      + M \dot{x_2} \right] &= 0\\
     \frac{d}{dt} \left[ m \left( \dot{x_2} + \dot{x_3}\cos\theta \right) 
-     + M \dot{x_2} \right] &= 0
+     + M \dot{x_2} \right] &= 0\\
+    m (\ddot{x_2} + \ddot{x_3}\cos\theta) + M \ddot{x_2} &= 0\\
+    \ddot{x_2}(m + M) + m\ddot{x_3}\cos\theta &= 0
 \end{align*}
 Which gives us,
 \begin{equation}\label{prob2_obj}
-    m (\ddot{x_2} + \ddot{x_3}\cos\theta) + M \ddot{x_2} = 0
+    \ddot{x_2} = \frac{- m\ddot{x_3}\cos\theta}{m + M}
 \end{equation}
+
+Using~\ref{prob2_eq_motion_x1}, we have,
+
+\begin{align*}
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_3}}\right) &= \frac{\partial L}{ \partial x_3}\\
+    \frac{d}{dt} \left[m(\dot{x_3} + \dot{x_2}\cos\theta)\right] &= mg\sin\theta\\
+    m (\ddot{x_3} + \ddot{x_2}\cos\theta) &= mg\sin\theta\\
+    \ddot{x_3} + \ddot{x_2}\cos\theta &= g\sin\theta\\
+    \ddot{x_3} &= g\sin\theta - \ddot{x_2}\cos\theta
+\end{align*}
 
 \section{Results}
 
@@ -403,11 +415,11 @@ regards to the vector $\textbf{r}$ are 0.
 
 For Problem 2, we obtained the following results, as given in~\ref{prob2_obj},
 
-\[
-    \boxed{
+% \[
+%     \boxed{
         
-    }
-\]
+%     }
+% \]
 
 \section{Discussion}
 
