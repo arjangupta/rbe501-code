@@ -240,8 +240,8 @@ with $\dot{\theta} = \omega_{circ}$ and $r = r_{circ}$ as follows,
     \frac{d}{dt}\left( m~{r_{circ}}^2~\omega_{circ} \right) &= 0\\
     \int \left[ \frac{d}{dt}\left( m~{r_{circ}}^2~\omega_{circ} \right) \right] dt &= \int (0) dt
 \end{align*}
-Which gives the well-known physical fact that angular momentum remains preserved in this system,
-\begin{equation}
+Which gives the well-known physical fact that angular momentum remains conserved in this system,
+\begin{equation}\label{prob1_ang_momentum_eq}
     m~{r_{circ}}^2~\omega_{circ} = C_{am}
 \end{equation}
 This is because the standard formula of the angular momentum, $mvr$, can
@@ -295,8 +295,18 @@ Where $x_1$ and $x_2$ are the displacements as shown in Figure~\ref{problem-2-gi
 \subsection{Find overall kinematic energy of system}
 
 Let us first establish our vectors. With the directions shown in Figure~\ref{problem-2-given-fig},
-the velocity of the moving ramp is given as $v_2 = \dot{x_2} \hat{\textbf{i}}$. The
-velocity of the block sliding down the ramp is given as $v_1 = \dot{x_2} \hat{\textbf{i}} + \dot{x_3}\hat{\textbf{r}}$,
+the velocity of the moving ramp is given as 
+
+\[
+    v_2 = \dot{x_2} \hat{\textbf{i}}
+\]
+
+The velocity of the block sliding down the ramp is given as
+
+\[
+    v_1 = \dot{x_2} \hat{\textbf{i}} + \dot{x_3}\hat{\textbf{r}}
+\]
+
 where $\dot{x_3}\hat{\textbf{r}}$ is the vector showing the velocity down the ramp in the reference frame of the
 ramp, and $\hat{\textbf{r}}$ is the direction down the ramp, in the reference frame of the ramp.
 
@@ -335,7 +345,7 @@ and,
     \boxed{\omega_{circ} = \sqrt[3]{\frac{M^2g^2}{m~C_{am}}}}
 \end{equation}
 
-Where $C_{am}$ is the constant angular momentum conserved for $r_{circ}$ and $\omega_{circ}$,
+Where $C_{am}$ is the constant angular momentum conserved (given by Equation~\ref{prob1_ang_momentum_eq}) for $r_{circ}$ and $\omega_{circ}$,
 which are the radius and angular velocity values when the linear velocity and linear acceleration with
 regards to the vector $\textbf{r}$ are 0.
 
