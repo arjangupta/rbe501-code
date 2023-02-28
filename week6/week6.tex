@@ -69,7 +69,7 @@ the ramp caused by the release of mass $m$, and we must use Euler-Lagrange appro
 
 Our first step toward solving Problem I is to find the overall kinetic energy ($T$) and
 overall potential energy ($U$) of the system. We then find the Lagrangian of the system
-as $L = T - U$. We can then use the Euler-Lagrangian equation,
+as $L \equiv T - U$. We can then use the Euler-Lagrangian equation,
 
 \begin{equation} \label{prob1_eq_motion_r}
     \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{r}}\right) = \frac{\partial L}{ \partial r}
@@ -109,13 +109,13 @@ which is simply the dot product of the vector with itself.
 
 \begin{align*}
     \dot{\textbf{r}}^2 = \dot{\textbf{r}} \cdot \dot{\textbf{r}}
-    &= (\dot{r} \cos \theta - r \dot{\theta} \sin \theta)^2 +
+    =&~(\dot{r} \cos \theta - r \dot{\theta} \sin \theta)^2 +
     (\dot{r} \sin \theta + r \dot{\theta} \cos \theta)^2\\
-    &= \dot{r}^2 \cos^2 \theta + r^2 \dot{\theta}^2 \sin^2 \theta 
-    + 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
-    + \dot{r}^2 \sin^2 \theta + r^2 \dot{\theta}^2 \cos \theta
+    =&~\dot{r}^2 \cos^2 \theta + r^2 \dot{\theta}^2 \sin^2 \theta 
+    + 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta + \\
+    &~\dot{r}^2 \sin^2 \theta + r^2 \dot{\theta}^2 \cos \theta
     - 2 r \dot{r} \dot{\theta} \cos\theta \sin\theta\\
-    &= \dot{r}^2 (\cos^2\theta + \sin^2\theta) 
+    =&~\dot{r}^2 (\cos^2\theta + \sin^2\theta) 
     + r^2\dot{\theta}^2 (\cos^2\theta + \sin^2\theta)\\
 \end{align*}
 Hence,
@@ -177,7 +177,7 @@ So, the overall potential energy of the system is simply,
 \end{equation}
 
 \subsubsection{Find Lagrangian of the system}
-The Lagrangian of the system is given as $L = T - U$. Using Equations 
+The Lagrangian of the system is given as $L \equiv T - U$. Using Equations 
 \ref{prob1_overall_ke} and \ref{prob1_overall_pe}, we get
 
 \begin{align*}
@@ -185,123 +185,57 @@ The Lagrangian of the system is given as $L = T - U$. Using Equations
         \frac{1}{2} m r^2 \dot{\theta}^2\right) -
         (-Mg(r-l))\\
     L &= \frac{1}{2} \dot{r}^2 (m + M) + 
-    \frac{1}{2} m r^2 \dot{\theta}^2 + Mg(r-L)
+    \frac{1}{2} m r^2 \dot{\theta}^2 + Mg(r-l)
 \end{align*}
 
 \subsubsection{Find equations of motion for the system}
 Using Equations \ref{prob1_eq_motion_r} and \ref{prob1_eq_motion_theta}
-to find the equations of motion.
+to find the equations of motion.\\
 
-\subsection{Approach for Problem 3--5}
+For the equations of motion with respect to $r$, we have,
+
+\begin{equation}
+    \frac{\partial L}{\partial r} = m~r~\dot{\theta}^2 - Mgl
+\end{equation}
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{r}}\right) 
+    = \frac{d}{dt}\left( \dot{r}(m + M) \right) = \ddot{r}(m + M)
+\end{equation}\\
+
+And for the equations of motion with respect to $\theta$, we have,
+
+\begin{equation}
+    \frac{\partial L}{\partial \theta} = 0
+\end{equation}
+\begin{equation}\label{prob1_dt_theta_el}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\theta}}\right) 
+    = \frac{d}{dt}\left( m~r^2~\dot{\theta} \right)
+\end{equation}
+
+While it is possible to show the expanded differentiated form of 
+Equation~\ref{prob1_dt_theta_el}, we have left it as is in order
+to aid our Discussion better.
+
+\subsection{Approach for Problem 2}
 
 \subsubsection{Restate objective in technical terms}
-In technical terms, we must first assign frames 0 through 3 for
-each link of the manipulator. We will then form a table of DH
-parameters. Using the table, and the general form of the DH matrix,
-we will find the $A$ matrices for the manipulator i.e.\ we need to find
-$A_1$, $A_2$, and $A_3$. Using these, we need to find $T^0_3$
-to give us our final answer. From our textbook~\cite{Spong2006}, the 
-DH Coordinate Frame Assumptions are,
-\begin{itemize}
-    \item \textbf{(DH1)} The axis $x_i$ is perpendicular to the axis $z_{i-1}$.
-    \item \textbf{(DH2)} The axis $x_i$ intersects the axis $z_{i-1}$.
-\end{itemize}
-\vspace{0.1in}
-\vspace{0.1in}
-\subsubsection{Assign frames}
-The first step toward solving our problem is to redraw the robot
-manipulator in symbolic
-form, and assign frames for links 0 through 3. Since we are following the DH assumptions,
-we must follow the frame assignment style shown in Figure 4, which
-is from our textbook~\cite{Spong2006}. Our redrawn figure is shown in Figure 5.\\
+Like Problem 1, we first find $T$ and $U$ in order to give us
+$L \equiv T - U$. After that we solve for the following
+equations of motion,
 
-As shown, frame 0 ($x_0 y_0 z_0$) is assigned at the first joint (revolute). Frame 1
-($x_1 y_1 z_1$) is also assigned at the
-first joint in order to have DH assumptions satisfied. Frame 2 ($x_2 y_2 z_2$)
- is assigned at third joint (revolute). Frame 3 ($x_3 y_3 z_3$) is assigned at
-the end of link 3, in a way that also satisfies DH assumptions.\\
+\begin{equation} \label{prob2_eq_motion_x1}
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_1}}\right) = \frac{\partial L}{ \partial x_1}
+\end{equation}
+and
+\begin{equation} \label{prob2_eq_motion_x2}
+    \frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x_2}}\right) = \frac{\partial L}{ \partial x_2}
+\end{equation}
 
-\subsubsection{Create DH table and set variables/constants}
-Now that we have assigned the frames, we can use Figure 4 to write
-the $\alpha_i$, $a_i$, $\theta_i$, $d_i$ quantities for each link.
+Where $x_1$ and $x_2$ are the displacements as shown in Figure~\ref{problem-2-given-fig}.
 
-\begin{table}[h!]
-    \begin{center}
-        \resizebox{0.8\columnwidth}{!}{%
-        \begin{tabular}{||c|c|c|c|c||}
-        \hline
-        Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
-        \hline\hline
-        1 & $-90\degree$ & 0 & $\theta_1$ & 0 \\
-        2 & $90\degree$ & 0 & 0 & $L_1 + q_2$ \\
-        3 & 0 & $L_3$ & $90\degree + \theta_3$ & 0\\
-        \hline
-        \end{tabular}
-        }
-    \end{center}
-    \caption{Denavit-Hartenberg table for Problem 3--5}
-\end{table}
+\subsection{Find overall kinematic energy of system}
 
-As seen in Table 1, we have chosen $L_1$ and $L_3$ to describe the constant link
-lengths of links 1 and 3, respectively. Additionally, $q_2$ describes the variable
-link length of link 2 (because of joint 2 being a prismatic joint).
-Furthermore, $\theta_1$ and $\theta_3$ describe the
-variable angles of revolute joints 1 and 3, respectively.
-
-\subsubsection{Find $A$ matrices}
-
-As given in our textbook~\cite{Spong2006}, the general form of an
-$A_i$ matrix is,
-
-\[
-    A_i =
-    \begin{bmatrix}
-        c_{\theta_i} & -s_{\theta_i}c_{\alpha_i} & s_{\theta_i}s_{\alpha_i} & a_i c_{\theta_i}\\
-        s_{\theta_i} & c_{\theta_i}c_{\alpha_i} & -c_{\theta_i}s_{\alpha_i} & a_i s_{\theta_i}\\
-        0 & s_{\alpha_i} & c_{\alpha_i} & d_i\\
-        0 & 0 & 0 & 1
-    \end{bmatrix}
-\]
-
-Where $c_{\theta_i}$ is $\cos{\theta_i}$, $s_{\theta_i}$ is $\sin{\theta_i}$,
-$c_{\alpha_i}$ is $\cos{\alpha_i}$, and $s_{\alpha_i}$ is $\sin{\alpha_i}$.
-We can write a MATLAB function for this $A_i$ matrix, as follows.
-
-
-Using this function in our MATLAB Live Script, we produce the following A matrices.
-
-\[
-    A_1 =
-    \begin{bmatrix}
-        \cos \theta_1 & 0 & -\sin \theta_1 & 0\\
-        \sin \theta_1 & 0 & \cos  \theta_1 & 0\\
-        0 & -1 & 0 & 0\\
-        0 & 0 & 0 & 1
-        \end{bmatrix}
-\]
-
-\[
-    A_2 = 
-    \begin{bmatrix}
-        1 & 0 & 0 & 0\\
-        0 & 0 & -1 & 0\\
-        0 & 1 & 0 & L_1 + q_2 \\
-        0 & 0 & 0 & 1
-        \end{bmatrix}
-\]
-
-\[
-    A_3 =
-    \begin{bmatrix}
-        \cos \left(\theta_3 +\frac{\pi }{2}\right) & -\sin \left(\theta_3 +\frac{\pi }{2}\right) & 0 & L_3 \,\cos \left(\theta_3 +\frac{\pi }{2}\right)\\
-        \sin \left(\theta_3 +\frac{\pi }{2}\right) & \cos \left(\theta_3 +\frac{\pi }{2}\right) & 0 & L_3 \,\sin \left(\theta_3 +\frac{\pi }{2}\right)\\
-        0 & 0 & 1 & 0\\
-        0 & 0 & 0 & 1
-        \end{bmatrix}
-\]
-
-Now we are ready to multiply these matrices to obtain the final result
-of our objective.
+Let us first establish our vectors. As shown in the diagram, 
 
 \section{Results}
 
