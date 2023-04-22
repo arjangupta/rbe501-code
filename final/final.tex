@@ -176,6 +176,35 @@ the valve, therefore aiding its turning.
 
 During the non-turning phases, we will use the same force controller to arrive at goal
 positions without any external wrench force.
+
+\subsection{Analysis of third part of video}
+In the third part of the video, it is demonstrated that the robot is able to perform its tasks
+while observing human safety. It does this by maintaining a slow velocity, and by stopping
+when it detects a human in its path. A still from this part of the video is shown in Figure~\ref{kuka-human-safety}.
+
+To achieve these safety measures, we would need to adjust the gain values for our force controller
+such that the robot moves slowly, i.e. approaches its goal position no faster than a certain period
+of time.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.15]{kuka-human-safety.png}
+    \caption{Robot stopping when it detects a human in its path --- still from the video}
+    \label{kuka-human-safety}
+\end{figure}
+Furthermore, we would need to set up a test for this in MATLAB by using MATLAB's \texttt{addCollision} and
+\texttt{checkCollision} functions. We would need to add a collision object to the robot, and then
+check if the robot is colliding with the object. At the time of the collision, the velocity and resultant
+force can be measured and compared to the safety standards. If the velocity and force are not within the
+safety standards, we will need to continue to tune our force controller until it is within the safety standards.
+
+\section{Conclusion}
+
+In this paper, we have described the kinematics and dynamics of a KUKA LBR iiwa robot
+that would be required to perform the tasks shown in the video. We have also described
+how we would implement these kinematics and dynamics in MATLAB, and how we would test
+collision safety in MATLAB.
+
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
