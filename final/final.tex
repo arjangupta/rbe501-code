@@ -76,7 +76,7 @@ The joints are attached to the bodies
 using in the following way: \texttt{body1.Joint = joint1}. The bodies are then
 attached to the tree structure by using the \texttt{addBody} function. The tree
 can then be displayed using the \texttt{showdetails} function.
-\subsection{Analysis of first part}
+\subsection{Analysis of first part of video}
 
 In this part of the video, the robot is shown performing a task where it correctly
 finds the gripping point of the drain valve. The robot then picks up the drain valve,
@@ -96,6 +96,49 @@ uses its torque sensing to arrive at the `stopping point' in tracing the drain
 valve, which helps it recognize the correct gripping point. The second is when
 the robot is able to recognize the correct insertion point for the drain valve
 using its torque sensing.
+
+\subsubsection{Kinematics for first part of video}
+
+The two main areas of kinematics that are used in this part of the video are
+where the robot picks up the valves, and where the robot inserts the valves.
+Specifically, we have a rough idea of where the valves originate, so we would
+use MATLAB's inverse kinematics solver to find the joint angles for the robot
+required to pick up the valves. For example, if the robot is named \texttt{robot} 
+in our code, we declare our solver as \texttt{ik = inverseKinematics('RigidBodyTree',robot)}.
+We then declare a $1 \times 7$ vector of pose tolerances, and an initial guess (which
+would be our home position), and input it into the solver as \texttt{ik('body7',tform,weights,initialguess)},
+where \texttt{tform} is the transform between the base frame and end-effector of our
+robot, which is computed using \texttt{getTransform}. We would then use
+\texttt{show(robot,configSoln)} to show the pickup position. If this looks correct,
+then it would be our first goal position. We would then repeat this process for the
+location where the robot inserts the valves, which would become our second goal position.
+
+\subsubsection{Dynamics for first part of video}
+
+Once we have computed the goal joint positions using inverse kinematics, we begin 
+to model our dynamics for the robot by implementing a force controller. We would
+first set our goal position, and initialize our positions, velocities, and accelerations
+to zero. We would then compute the joint torques using the \texttt{inverseDynamics}
+function provided my MATLAB. For one of the arguments of this function, the current linear acceleration needs to be
+computed, which can be obtained from the force needed for each joint. The force required
+for each joint is modeled at the heart of our controller, given by the formula,
+
+\[
+    F = K_p E + K_d \dot{E}
+\]
+
+Where $E$ is the error computed from the difference between the current position and
+the goal position. $K_p$ and $K_d$ are the proportional and derivative gains, respectively.
+We can then compute the current velocities and positions by integrating the accelerations.
+We can keep track of the joint torques and keep iterating our controller until we reach the first goal
+position.
+
+After the first goal position is reached, we similarly implement a velocity controller
+which will move in a straight line in an `upward sloping direction' in order to find the
+`stopping point' of the drain valve. The stopping point is found by using the live torque from
+the joint torque sensors (an external wrench force will be detected). Then, we may go back to
+our force controller to iterate towards the second goal position. The robot will detect that
+the insertion is complete when another external counter-acting torque is detected on the end-effector.
 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
