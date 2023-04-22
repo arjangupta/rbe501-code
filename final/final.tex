@@ -61,7 +61,7 @@ used in each of the three parts of the video. We will also describe how one woul
 simulate the tasks being performed by the robot in MATLAB, using the Robotics
 ToolBox.
 
-\section{Materials and Methods}
+\section{Modeling and Analysis}
 
 \subsection{MATLAB setup for robot}
 
@@ -79,31 +79,31 @@ can then be displayed using the \texttt{showdetails} function.
 \subsection{Analysis of first part of video}
 
 In this part of the video, the robot is shown performing a task where it correctly
-finds the gripping point of the drain valve. The robot then picks up the drain valve,
-traces the outline of the drain valve to the attached stopping point, and then inserts
-the drain valve into the connection for the drain valve. It then repeats the same process
-for a second drain valve.
+finds the gripping point of the drain hose. The robot then picks up the drain hose,
+traces the outline of the drain hose to the attached stopping point, and then inserts
+the drain hose into the connection for the drain hose. It then repeats the same process
+for a second drain hose.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.15]{kuka-drain-valve-insertion.png}
-    \caption{Robot aiming to insert the first drain valve --- still from the video}
-    \label{kuka-drain-valve-insertion}
+    \includegraphics[scale=0.15]{kuka-drain-hose-insertion.png}
+    \caption{Robot aiming to insert the first drain hose --- still from the video}
+    \label{kuka-drain-hose-insertion}
 \end{figure}
 
 There are two key moments in this part of the video. The first is when the robot
 uses its torque sensing to arrive at the `stopping point' in tracing the drain
-valve, which helps it recognize the correct gripping point. The second is when
-the robot is able to recognize the correct insertion point for the drain valve
+hose, which helps it recognize the correct gripping point. The second is when
+the robot is able to recognize the correct insertion point for the drain hose
 using its torque sensing.
 
 \subsubsection{Kinematics for first part of video}
 
 The two main areas of kinematics that are used in this part of the video are
-where the robot picks up the valves, and where the robot inserts the valves.
-Specifically, we have a rough idea of where the valves originate, so we would
+where the robot picks up the hoses, and where the robot inserts the hoses.
+Specifically, we have a rough idea of where the hoses originate, so we would
 use MATLAB's inverse kinematics solver to find the joint angles for the robot
-required to pick up the valves. For example, if the robot is named \texttt{robot} 
+required to pick up the hoses. For example, if the robot is named \texttt{robot} 
 in our code, we declare our solver as \texttt{ik = inverseKinematics('RigidBodyTree',robot)}.
 We then declare a $1 \times 7$ vector of pose tolerances, and an initial guess (which
 would be our home position), and input it into the solver as \texttt{ik('body7',tform,weights,initialguess)},
@@ -111,7 +111,7 @@ where \texttt{tform} is the transform between the base frame and end-effector of
 robot, which is computed using \texttt{getTransform}. We would then use
 \texttt{show(robot,configSoln)} to show the pickup position. If this looks correct,
 then it would be our first goal position. We would then repeat this process for the
-location where the robot inserts the valves, which would become our second goal position.
+location where the robot inserts the hoses, which would become our second goal position.
 
 \subsubsection{Dynamics for first part of video}
 
@@ -140,6 +140,42 @@ the joint torque sensors (an external wrench force will be detected). Then, we m
 our force controller to iterate towards the second goal position. The robot will detect that
 the insertion is complete when another external counter-acting torque is detected on the end-effector.
 
+\subsection{Analysis of second part of video}
+
+In this part of the video, the robot is shown performing a task where it correctly
+turns a drain valve to pick it up, and then inserts it into the connection for the
+drain valve by also applying force to the drain valve and turning it. A still from
+this part of the video is shown in Figure~\ref{kuka-drain-valve-insertion}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.2]{kuka-valve-insertion.png}
+    \caption{Robot turning the drain valve before insertion --- still from the video}
+    \label{kuka-drain-valve-insertion}
+\end{figure}
+
+\subsubsection{Kinematics for second part of video}
+
+The MATLAB functions and method, i.e., \texttt{inverseDynamics} and \texttt{getTransform} are used to compute the inverse kinematics for this part of the video is similar to the first part of the
+video, except that we have new goal positions, and a new number of goal positions. We would
+use inverse kinematics to first find the pickup location for the drain valve, which would be our
+first goal. The second goal would be the `turned' position of the drain valve, which would be
+our second goal. One thing to note during this turning is that a force is applied to the drain
+valve, however this is not modeled in our kinematics --- it is modeled in our dynamics.
+The third and fourth goals are similar in nature --- we need to find the target robot configuration for the the initial insertion location
+for the drain valve, and the same for the final insertion location for the drain valve.
+
+\subsubsection{Dynamics for second part of video}
+For the dynamics, we will again use the force controller we described in the dyhamics for the first part
+of the video. We will use the same formula for the force controller, however during the turning phases, we will need to use
+our `inverseDynamics' function with the additional argument of the external wrench force. This external
+wrench force is the force applied to the drain valve, which is modeled as a force applied to the end-effector
+using the \texttt{externalForce} function. The external force is applied such that as though something
+is `pulling away' the end-effector from the valve. This way, the end effector is able apply a force `into'
+the valve, therefore aiding its turning.
+
+During the non-turning phases, we will use the same force controller to arrive at goal
+positions without any external wrench force.
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
 
