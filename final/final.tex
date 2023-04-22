@@ -49,7 +49,7 @@ Its maximum reach is 800--820 mm depending on the model.
 
 In the video, the robot is first shown in its workspace, showing a HRC-suitable
 gripper. A drain valve, a connector for the drain valve, and a connection for
-the hoses are shown. A still from the video is shown in Figure~\ref{kuka-setup-desc}.
+the hoses are shown. A still from the video describing the gripper and workspace is shown in Figure~\ref{kuka-setup-desc}.
 
 After the setup is shown, the robot is shown performing the assembly tasks. The first
 part shows the utilization of the joint torque sensors for process recognition. The second
@@ -63,9 +63,39 @@ ToolBox.
 
 \section{Materials and Methods}
 
+\subsection{MATLAB setup for robot}
+
+We first describe the MATLAB setup for the robot. We use the Robotics Toolbox for
+building the robot model. The robot model is built using the \texttt{rigidBodyTree} MATLAB type.
+We use the KUKA LBR iiwa data sheet to populate the bodies and joints of the
+\texttt{rigidBodyTree}. The bodies and joints are created using the \texttt{rigidBody} and
+\texttt{rigidBodyJoint} functions in the Robotics Toolbox. At this point, we use
+the DH parameters to assign fixed transforms to the joints, using the function
+\texttt{setFixedTransform}.
+The joints are attached to the bodies
+using in the following way: \texttt{body1.Joint = joint1}. The bodies are then
+attached to the tree structure by using the \texttt{addBody} function. The tree
+can then be displayed using the \texttt{showdetails} function.
 \subsection{Analysis of first part}
 
+In this part of the video, the robot is shown performing a task where it correctly
+finds the gripping point of the drain valve. The robot then picks up the drain valve,
+traces the outline of the drain valve to the attached stopping point, and then inserts
+the drain valve into the connection for the drain valve. It then repeats the same process
+for a second drain valve.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.15]{kuka-drain-valve-insertion.png}
+    \caption{Robot aiming to insert the first drain valve --- still from the video}
+    \label{kuka-drain-valve-insertion}
+\end{figure}
+
+There are two key moments in this part of the video. The first is when the robot
+uses its torque sensing to arrive at the `stopping point' in tracing the drain
+valve, which helps it recognize the correct gripping point. The second is when
+the robot is able to recognize the correct insertion point for the drain valve
+using its torque sensing.
 
 \bibliography{refs.bib}
 \bibliographystyle{IEEEtran}
